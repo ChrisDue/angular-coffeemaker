@@ -10,6 +10,8 @@ import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/pages/about/about.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
+import { SuppliesComponent } from './components/supplies/supplies.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AboutComponent } from './components/pages/about/about.component';
     TodoItemComponent,
     HeaderComponent,
     AddTodoComponent,
-    AboutComponent
+    AboutComponent,
+    RecipesComponent,
+    SuppliesComponent
   ],
   imports: [
     BrowserModule,
