@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/pages/about/about.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
-import { SuppliesComponent } from './components/supplies/supplies.component';
+import { IngredientsComponent } from './components/ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { SuppliesComponent } from './components/supplies/supplies.component';
     AddTodoComponent,
     AboutComponent,
     RecipesComponent,
-    SuppliesComponent
+    IngredientsComponent
   ],
   imports: [
     BrowserModule,

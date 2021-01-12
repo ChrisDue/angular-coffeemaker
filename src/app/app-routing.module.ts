@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TodosComponent } from './components/todos/todos.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
-import { SuppliesComponent } from './components/supplies/supplies.component';
+import { IngredientsComponent } from './components/ingredients/ingredients.component';
 import { AboutComponent } from './components/pages/about/about.component';
 
 const routes: Routes = [
   { path: '', component: TodosComponent },
   { path: 'recipes', component: RecipesComponent },
-  { path: 'supplies', component: SuppliesComponent },
+  { path: 'ingredients', component: IngredientsComponent },
   { path: 'about', component: AboutComponent }
 ];
 

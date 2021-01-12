@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Todo } from '../models/Todo';
+import { Ingredient } from '../models/Ingredient';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,8 +17,14 @@ const httpOptions = {
 export class TodoService {
   todosUrl: string = 'https://jsonplaceholder.typicode.com/todos'; // using limit option _limit=5
   todosLimit = '?_limit=5';
+  coffeeUrl: string = 'http://localhost:3000/ingredients';
 
   constructor(private http: HttpClient) { }
+
+  // TODO: Get Ingredients 
+  getIngredients(): Observable<Ingredient[]> {
+    return this.http.get<Ingredient[]>(`${this.coffeeUrl}`);
+  }
 
   // Get Todos
   getTodos(): Observable<Todo[]> {
