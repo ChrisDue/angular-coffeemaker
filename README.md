@@ -1,9 +1,39 @@
-# AngularCrashTodolist
+# Angular Coffeemaker
+
+System under Test for my Bachelor Thesis. All important info is listed below.  
+
+<br/>
+
+# Launch instructions 
+
+## Coffeemaker Web App 
+
+> ng server --open  
+
+Opens your Default Browser on http://localhost:4200/, where the Coffeemaker is running.  
+
+## API and DB
+
+### Installation
+
+> npm install -g json-server
+
+### Launch and view
+
+> json-server --watch db.json
+
+<br/>
+
+# Sources
 
 Created by following the YouTube  crashcourse by Traversy Media: https://www.youtube.com/watch?v=Fdf5aTYRW0E  
 Related Github: https://github.com/bradtraversy/angular-crash-todolist
 
-# Boilerplate text by Angular
+<br/>
+<br/>
+<br/>
+
+# Default text by Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
