@@ -3,31 +3,37 @@
 System under Test for my Bachelor Thesis. All important info is listed below.  
 
 <br/>
+<br/>
 
-# Launch instructions 
+# Getting started 
 
-## Coffeemaker Web App 
+Created by following the YouTube crashcourse by Traversy Media: https://www.youtube.com/watch?v=Fdf5aTYRW0E  
+Related Github: https://github.com/bradtraversy/angular-crash-todolist
+
+## 1. Coffeemaker Web App 
+
+### ? 1.1 Installation ?
+
+> npm install -g
+
+### 1.2 Launch and view
 
 > ng server --open  
 
 Opens your Default Browser on http://localhost:4200/, where the Coffeemaker is running.  
 
-## API and DB
+## 2. API and DB
 
-### Installation
+Created following the instructions in the packages' readme:  
+https://www.npmjs.com/package/json-server / https://github.com/typicode/json-server.
+
+### 2.1 Installation
 
 > npm install -g json-server
 
-### Launch and view
+### 2.2 Launch and view
 
 > json-server --watch db.json
-
-<br/>
-
-# Sources
-
-Created by following the YouTube  crashcourse by Traversy Media: https://www.youtube.com/watch?v=Fdf5aTYRW0E  
-Related Github: https://github.com/bradtraversy/angular-crash-todolist
 
 <br/>
 <br/>
