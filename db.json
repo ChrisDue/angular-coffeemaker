@@ -1,12 +1,22 @@
 {
   "ingredients": [
     {
+      "id": 1,
       "name": "Water",
+      "unit": "ml",
       "amount": 1
     },
     {
+      "id": 2,
+      "name": "Coffee",
+      "unit": "g",
+      "amount": 500
+    },
+    {
+      "id": 3,
       "name": "Milk",
-      "amount": 2
+      "unit": "ml",
+      "amount": 250
     }
   ],
   "profile": {

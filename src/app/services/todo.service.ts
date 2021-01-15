@@ -21,11 +21,6 @@ export class TodoService {
 
   constructor(private http: HttpClient) { }
 
-  // TODO: Get Ingredients 
-  getIngredients(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(`${this.coffeeUrl}`);
-  }
-
   // Get Todos
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
