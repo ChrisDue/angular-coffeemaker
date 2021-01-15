@@ -9,10 +9,16 @@ import { IngredientsService } from './../../services/ingredients.service';
 })
 export class IngredientsComponent implements OnInit {
 
+  ingredients!: Ingredient[];
+
   constructor(private ingredientsService: IngredientsService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // Get ingredients list from server / db
+    this.ingredientsService.getIngredients().subscribe(ingredients => {
+      this.ingredients = ingredients;
+    });
   }
 
   milk300: Ingredient = { id: 3, name: "Milk", unit: Unit.ml, amount: 300 };

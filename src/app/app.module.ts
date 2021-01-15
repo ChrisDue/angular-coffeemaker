@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/pages/about/about.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { IngredientsComponent } from './components/ingredients/ingredients.component';
+import { IngredientItemComponent } from './components/ingredient-item/ingredient-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { IngredientsComponent } from './components/ingredients/ingredients.compo
     AddTodoComponent,
     AboutComponent,
     RecipesComponent,
-    IngredientsComponent
+    IngredientsComponent,
+    IngredientItemComponent
   ],
   imports: [
     BrowserModule,
