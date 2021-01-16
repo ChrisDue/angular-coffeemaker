@@ -3,8 +3,12 @@
 }
 
 .border-div {
-    outline-color:#c06525;
-    outline-style: solid;
+    border: 3px solid #c06525;
+    border-radius: 15px;
+    max-width: 800px;
+    /* outline-color:#c06525; */
+    /* perspective: 1px; */
+    /* overflow: hidden; */
 }
 
 body {
@@ -82,7 +86,7 @@ a {
 /* Submit forms */
 .form {
     display: flex;
-    padding: 15px 32px;
+    padding: 0px 32px 15px 32px;
   }
   
   /* .form input[type='text'] {

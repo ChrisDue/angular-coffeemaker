@@ -1,12 +1,10 @@
 <div class="border-div" [ngClass]="setClasses()">
     <p>
         {{ ingredient.name }}: {{ ingredient.amount }} {{ ingredient.unit }}
-        <br>
-        <button class="button button1">Refill {{ ingredient.name }}</button>
     </p>
     <form class="form" (ngSubmit)="onSubmit()">
         <input type="number" name="refillAmount" [(ngModel)]="refillAmount" placeholder="Amount...">
         <input type="submit" value="Refill {{ ingredient.name }}" class="btn">
     </form>
-    <br>
 </div>
+<br>
