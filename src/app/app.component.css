@@ -2,6 +2,11 @@
     padding: 15px 32px;
 }
 
+.border-div {
+    outline-color:#c06525;
+    outline-style: solid;
+}
+
 body {
     --nav-width: 200px;
     margin: 0 0 0 var(--nav-width);
