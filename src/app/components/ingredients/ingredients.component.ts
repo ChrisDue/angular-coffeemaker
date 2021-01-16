@@ -8,7 +8,6 @@ import { IngredientsService } from './../../services/ingredients.service';
   styleUrls: ['../../app.component.css']
 })
 export class IngredientsComponent implements OnInit {
-
   ingredients!: Ingredient[];
 
   constructor(private ingredientsService: IngredientsService) {
