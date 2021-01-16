@@ -11,10 +11,18 @@ export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient = new Ingredient;
   @Output() deleteIngredient: EventEmitter<Ingredient> = new EventEmitter();
 
+  refillAmount!: number;
 
   constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    // const todo = {
+    //   title: this.title,
+    //   completed: false
+    // }
   }
 
   setClasses() {
