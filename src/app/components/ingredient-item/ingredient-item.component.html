@@ -1,6 +1,8 @@
 <div class="border-div">
     <p>
-        {{ ingredient.name }}: {{ ingredient.amount }} {{ ingredient.unit }}
+        {{ ingredient.name }}: 
+        {{ ingredient.amount }} 
+        {{ ingredient.unit }}
     </p>
     <form class="form" (ngSubmit)="onRefillSubmit()">
         <input type="number" 

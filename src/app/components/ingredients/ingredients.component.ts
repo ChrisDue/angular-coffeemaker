@@ -22,6 +22,11 @@ export class IngredientsComponent implements OnInit {
 
   milk300: Ingredient = { id: 3, name: "Milk", unit: Unit.ml, amount: 300 };
 
+  onRefillSubmit(ingredient: Ingredient) {
+    console.log('get something');
+    this.ingredientsService.getIngredients().subscribe(x => console.log(x))
+  }
+
   onGet() {
     console.log('get something');
     this.ingredientsService.getIngredients().subscribe(x => console.log(x))
@@ -36,6 +41,4 @@ export class IngredientsComponent implements OnInit {
     console.log('use something');
     this.ingredientsService.useIngredients(this.milk300, 200).subscribe(x => console.log(x))
   }
-
-  // TODO
 }

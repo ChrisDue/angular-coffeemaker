@@ -50,7 +50,7 @@ body {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-  }
+}
   
     .button1 {background-color: #4CAF50;} /* Green */
     .button2 {background-color: #008CBA;} /* Blue */
@@ -87,17 +87,18 @@ a {
 .form {
     display: flex;
     padding: 0px 32px 15px 32px;
-  }
+}
   
-  /* .form input[type='text'] {
+/* .form input[type='text'] {
     flex: 10;
     padding: 5px;
-  } */
+} */
 
-  .form input[type='number'] {
+.form input[type='number'] {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
+    max-width: 150px;
     /* margin: 4px 2px; */
     /* border-top-left-radius: 6px; */
     /* border-bottom-left-radius: 6px; */
@@ -114,5 +115,5 @@ a {
     /* border-top-right-radius: 6px;
     border-bottom-right-radius: 6px; */
     cursor: pointer;
-  }
+}
   

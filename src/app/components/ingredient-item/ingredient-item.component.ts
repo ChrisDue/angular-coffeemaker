@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Ingredient } from 'src/app/models/Ingredient';
+import { IngredientsService } from 'src/app/services/ingredients.service';
 
 @Component({
   selector: 'app-ingredient-item',
@@ -8,11 +9,11 @@ import { Ingredient } from 'src/app/models/Ingredient';
 })
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient = new Ingredient;
-  @Output() refillEmitter: EventEmitter<any> = new EventEmitter();
+  // @Output() refillEmitter: EventEmitter<Ingredient> = new EventEmitter();
 
   refillAmount!: number;
 
-  constructor() { }
+  constructor(private service: IngredientsService) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class IngredientItemComponent implements OnInit {
   onRefillSubmit() {
     this.ingredient.amount += this.refillAmount;
     console.log(this.ingredient);
-    this.refillEmitter.emit(this.ingredient);
+    // this.refillEmitter.emit(this.ingredient);
+    // TODO this.service.updateIngredient();
   }
 }
