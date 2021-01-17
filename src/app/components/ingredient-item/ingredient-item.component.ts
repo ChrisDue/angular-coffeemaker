@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { IngredientsService } from 'src/app/services/ingredients.service';
 import { Ingredient } from 'src/app/models/Ingredient';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-ingredient-item',
@@ -9,7 +10,7 @@ import { Ingredient } from 'src/app/models/Ingredient';
 })
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient = new Ingredient;
-  @Output() deleteIngredient: EventEmitter<Ingredient> = new EventEmitter();
+  @Output() refillEmitter: EventEmitter<any> = new EventEmitter();
 
   refillAmount!: number;
 
@@ -18,11 +19,10 @@ export class IngredientItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    // const todo = {
-    //   title: this.title,
-    //   completed: false
-    // }
+  onRefillSubmit() {
+    this.ingredient.amount += this.refillAmount;
+    console.log(this.ingredient);
+    // TODO emit ingredient + post it
   }
 
   setClasses() {

@@ -2,9 +2,9 @@
     <p>
         {{ ingredient.name }}: {{ ingredient.amount }} {{ ingredient.unit }}
     </p>
-    <form class="form" (ngSubmit)="onSubmit()">
+    <form class="form" (ngSubmit)="onRefillSubmit(refillAmount)">
         <input type="number" name="refillAmount" [(ngModel)]="refillAmount" placeholder="Amount...">
-        <input type="submit" value="Refill {{ ingredient.name }}" class="btn">
+        <input type="submit" value="Refill {{ ingredient.name }}" class="btn button2">
     </form>
 </div>
 <br>
