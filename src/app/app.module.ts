@@ -13,6 +13,7 @@ import { AboutComponent } from './components/pages/about/about.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { IngredientsComponent } from './components/ingredients/ingredients.component';
 import { IngredientItemComponent } from './components/ingredient-item/ingredient-item.component';
+import { RecipeItemComponent } from './components/recipe-item/recipe-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { IngredientItemComponent } from './components/ingredient-item/ingredient
     AboutComponent,
     RecipesComponent,
     IngredientsComponent,
-    IngredientItemComponent
+    IngredientItemComponent,
+    RecipeItemComponent
   ],
   imports: [
     BrowserModule,

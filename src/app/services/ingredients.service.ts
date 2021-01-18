@@ -13,6 +13,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class IngredientsService {
   ingredientsUrl: string = 'http://localhost:3000/ingredients';
 
