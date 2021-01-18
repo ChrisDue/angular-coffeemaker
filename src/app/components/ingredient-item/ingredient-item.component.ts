@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Ingredient } from 'src/app/models/Ingredient';
 import { IngredientsService } from 'src/app/services/ingredients.service';
+import { Ingredient } from 'src/app/models/Ingredient';
 
 @Component({
   selector: 'app-ingredient-item',
@@ -9,7 +9,6 @@ import { IngredientsService } from 'src/app/services/ingredients.service';
 })
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient = new Ingredient;
-  // @Output() refillEmitter: EventEmitter<Ingredient> = new EventEmitter();
 
   refillAmount!: number;
 
@@ -20,8 +19,7 @@ export class IngredientItemComponent implements OnInit {
 
   onRefillSubmit() {
     this.ingredient.amount += this.refillAmount;
-    console.log(this.ingredient);
-    // this.refillEmitter.emit(this.ingredient);
-    // TODO this.service.updateIngredient();
+    console.log("Updated ingredient: " + this.ingredient.name + " with " + this.ingredient.amount);
+    this.service.updateIngredient(this.ingredient);
   }
 }

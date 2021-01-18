@@ -18,12 +18,11 @@ export class IngredientsService {
 
   constructor(private http: HttpClient) { }
 
-  // Add ingredients to the machine
-  addIngredients(ingredient: Ingredient, addedAmount: number): Observable<any> {
-    const url = `${this.ingredientsUrl}/${ingredient.id}`;
-    console.log("got " + ingredient.name + " at " + ingredient.amount + " adding " + addedAmount);
-    ingredient.amount += addedAmount;
-    return this.http.put(url, ingredient, httpOptions);
+  updateIngredient(ingredient: Ingredient) {
+    let tempUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
+    return this.http.patch(tempUrl, ingredient).subscribe(res => {
+      // console.log("Response: " + res);
+    });
   }
 
   // Use ingredients from the machine
@@ -38,6 +37,4 @@ export class IngredientsService {
   getIngredients(): Observable<Ingredient[]> {
     return this.http.get<Ingredient[]>(`${this.ingredientsUrl}`);
   }
-
-  // TODO
 }

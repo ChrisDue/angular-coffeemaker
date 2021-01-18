@@ -4,19 +4,19 @@
       "id": 1,
       "name": "Water",
       "unit": "ml",
-      "amount": 1000
+      "amount": 100
     },
     {
       "id": 2,
       "name": "Coffee",
       "unit": "g",
-      "amount": 500
+      "amount": 112
     },
     {
       "id": 3,
       "name": "Milk",
       "unit": "ml",
-      "amount": 600
+      "amount": 454
     }
   ],
   "profile": {
