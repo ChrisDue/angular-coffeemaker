@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Ingredient, Unit } from 'src/app/models/Ingredient';
 import { IngredientsService } from './../../services/ingredients.service';
+import { Ingredient } from 'src/app/models/Ingredient';
 
 @Component({
   selector: 'app-ingredients',
@@ -13,7 +13,7 @@ export class IngredientsComponent implements OnInit {
   constructor(private ingredientsService: IngredientsService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // Get ingredients list from server / db
     this.ingredientsService.getIngredients().subscribe(ingredients => {
       this.ingredients = ingredients;
@@ -21,7 +21,7 @@ export class IngredientsComponent implements OnInit {
   }
 
   onGet() {
-    console.log('get something');
+    console.log('get all ingredients');
     this.ingredientsService.getIngredients().subscribe(x => console.log(x))
   }
 

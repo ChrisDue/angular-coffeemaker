@@ -10,9 +10,9 @@ import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/pages/about/about.component';
-import { RecipesComponent } from './components/recipes/recipes.component';
 import { IngredientsComponent } from './components/ingredients/ingredients.component';
 import { IngredientItemComponent } from './components/ingredient-item/ingredient-item.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
 import { RecipeItemComponent } from './components/recipe-item/recipe-item.component';
 
 @NgModule({
@@ -23,9 +23,9 @@ import { RecipeItemComponent } from './components/recipe-item/recipe-item.compon
     HeaderComponent,
     AddTodoComponent,
     AboutComponent,
-    RecipesComponent,
     IngredientsComponent,
     IngredientItemComponent,
+    RecipesComponent,
     RecipeItemComponent
   ],
   imports: [

@@ -36,6 +36,6 @@ export class IngredientsService {
 
   // List currently available ingredients
   getIngredients(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(`${this.ingredientsUrl}`);
+    return this.http.get<Ingredient[]>(this.ingredientsUrl);
   }
 }
