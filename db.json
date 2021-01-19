@@ -19,6 +19,32 @@
       "amount": 454
     }
   ],
+  "recipes": [
+    {
+      "name": "Americano",
+      "coffee": 5,
+      "water": 10,
+      "milk": 0,
+      "cocoa": 0,
+      "isFavorite": false
+    },
+    {
+      "name": "Espresso",
+      "coffee": 10,
+      "water": 10,
+      "milk": 0,
+      "cocoa": 0,
+      "isFavorite": false
+    },
+    {
+      "name": "Latte Macchiato",
+      "coffee": 5,
+      "water": 10,
+      "milk": 5,
+      "cocoa": 0,
+      "isFavorite": false
+    }
+  ],
   "profile": {
     "name": "typicode"
   }
