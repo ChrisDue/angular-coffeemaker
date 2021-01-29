@@ -24,9 +24,4 @@ export class IngredientsComponent implements OnInit {
     console.log('get all ingredients');
     this.ingredientsService.getIngredients().subscribe(x => console.log(x))
   }
-
-  // onUse() {
-  //   console.log('use something');
-  //   this.ingredientsService.useIngredients(this.milk300, 200).subscribe(x => console.log(x))
-  // }
 }               

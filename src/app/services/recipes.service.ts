@@ -15,11 +15,11 @@ const httpOptions = {
 })
 
 export class RecipesService {
-  recipesUrl: string = 'http://localhost:3000/recipes';
+  // recipesUrl: string = 'http://localhost:3000/recipes';
   
   constructor(private http: HttpClient) { }
   
-  getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.recipesUrl);
-  }
+  // getRecipes(): Observable<Recipe[]> {
+  //   return this.http.get<Recipe[]>(this.recipesUrl);
+  // }
 }
