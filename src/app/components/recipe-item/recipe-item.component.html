@@ -1,24 +1,24 @@
 <div class="border-div">
     <h2>{{ recipe.name }}:</h2>
-    <p> Needed coffee: {{ recipe.coffee }} g<br>
-        Needed water: {{ recipe.water }} ml<br>
-        Needed milk: {{ recipe.milk }} ml<br>
-        Needed cocoa: {{ recipe.cocoa }} g<br>
+    <p> Needed coffee: {{ recipe.coffeeAmount }} g<br>
+        Needed water: {{ recipe.waterAmount }} ml<br>
+        Needed milk: {{ recipe.milkAmount }} ml<br>
+        Needed cocoa: {{ recipe.cocoaAmount }} g<br>
         <!-- <input type="submit" 
         value="Refill {{ ingredient.name }}" 
         class="btn button2"> -->
-        <button type="submit" class="button button1">Make an {{ recipe.name }}</button>
+        <!-- <button type="submit" class="button button1">Make an {{ recipe.name }}</button> -->
     </p>
 
-    <!-- <form class="form" (ngSubmit)="onRefillSubmit()">
-        <input type="number" 
+    <form class="form" (ngSubmit)="onBrewSubmit()">
+        <!-- <input type="number" 
             name="refillAmount" 
             [(ngModel)]="refillAmount" 
-            placeholder="Amount...">
+            placeholder="Amount..."> -->
         <input type="submit" 
-            value="Refill {{ ingredient.name }}" 
-            class="btn button2">
-    </form> -->
+            value="Brew 1 {{ recipe.name }}" 
+            class="btn button1">
+    </form>
 </div>
 
 <br>

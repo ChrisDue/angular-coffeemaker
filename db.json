@@ -2,46 +2,52 @@
   "ingredients": [
     {
       "id": 1,
-      "name": "Water",
-      "unit": "ml",
-      "amount": 100
+      "name": "CoffeeAmount",
+      "unit": "g",
+      "amount": 112
     },
     {
       "id": 2,
-      "name": "Coffee",
-      "unit": "g",
-      "amount": 112
+      "name": "Water",
+      "unit": "ml",
+      "amount": 100
     },
     {
       "id": 3,
       "name": "Milk",
       "unit": "ml",
       "amount": 454
+    }, 
+    {
+      "id": 4,
+      "name": "Cocoa",
+      "unit": "g",
+      "amount": 100
     }
   ],
   "recipes": [
     {
       "name": "Americano",
-      "coffee": 5,
-      "water": 10,
-      "milk": 0,
-      "cocoa": 0,
+      "coffeeAmount": 5,
+      "waterAmount": 10,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
       "isFavorite": false
     },
     {
       "name": "Espresso",
-      "coffee": 10,
-      "water": 10,
-      "milk": 0,
-      "cocoa": 0,
+      "coffeeAmount": 10,
+      "waterAmount": 10,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
       "isFavorite": false
     },
     {
       "name": "Latte Macchiato",
-      "coffee": 5,
-      "water": 10,
-      "milk": 5,
-      "cocoa": 0,
+      "coffeeAmount": 5,
+      "waterAmount": 10,
+      "milkAmount": 5,
+      "cocoaAmount": 0,
       "isFavorite": false
     }
   ],

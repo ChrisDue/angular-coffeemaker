@@ -1,8 +1,8 @@
 export class Recipe {
     name!: string;
-    coffee!: number;
-    water!: number;
-    milk!: number;
-    cocoa!: number;
+    coffeeAmount!: number;
+    waterAmount!: number;
+    milkAmount!: number;
+    cocoaAmount!: number;
     isFavorite!: boolean;
 }
