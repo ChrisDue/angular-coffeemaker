@@ -5,7 +5,7 @@ import { IngredientsService } from 'src/app/services/ingredients.service';
 @Component({
   selector: 'app-recipe-item',
   templateUrl: './recipe-item.component.html',
-  styleUrls: ['../../app.component.css']
+  styleUrls: ['../../app.component.css', '../recipes/recipes.component.css']
 })
 
 export class RecipeItemComponent implements OnInit {
@@ -16,8 +16,8 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onBrewSubmit() {
-    console.log('Use ingredients of clicked recipe ' + this.recipe.name);
+  onBrewSubmit(): void {
+    console.log('Use ingredients for ' + this.recipe.name);
     this.service.brewRecipe(this.recipe);
   }
 }

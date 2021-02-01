@@ -4,7 +4,7 @@ import { Recipe } from 'src/app/models/Recipe';
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
-  styleUrls: ['../../app.component.css', './add-recipe.component.css']
+  styleUrls: ['../../app.component.css', '../recipes/recipes.component.css']
 })
 export class AddRecipeComponent implements OnInit {
   // any because not formatted as our module with id, etc.

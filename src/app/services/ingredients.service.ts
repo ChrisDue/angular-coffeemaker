@@ -23,11 +23,12 @@ export class IngredientsService {
   constructor(private http: HttpClient) { }
 
   /* R E C I P E S */
-
+  // Get all existing recipes 
   getRecipes(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(this.recipesUrl);
   }
 
+  // Consume all ingredients associated to the selected recipe
   async brewRecipe(recipe: Recipe) {
     console.log("> > > Brewing now: " + recipe.name);
 
@@ -47,27 +48,22 @@ export class IngredientsService {
   }
 
   /* I N G R E D I E N T S */
-
+  // Get one ingredient specified by the ID received 
   async getIngredientById(ingredientId: Id): Promise<Ingredient> {
-    // console.log(">>>START GET: Getting ingredient with ID " + ingredientId);
     const url = `${this.ingredientsUrl}/${ingredientId}`;
     const ingredient: Ingredient = await this.http.get<Ingredient>(url).toPromise();
-    // console.log(ingredient);
-    // console.log(">>>END GET.");
     return ingredient;
   }
 
   // Consume ingredients from the machine
   useIngredient(ingredient: Ingredient, usedAmount: number): void {
     const ingUrl = `${this.ingredientsUrl}/${ingredient.id}`;
-    // console.log("> Got " + ingredient.name + " at " + ingredient.amount + " using " + usedAmount);
     ingredient.amount -= usedAmount;
-    // console.log("< Sending update for " + ingredient.amount + " " + ingredient.name);
     this.http.patch(ingUrl, ingredient, httpOptions).subscribe(res => {
     });
   }
 
-  // Put a given amount of one ingredient back into the machine
+  // Add a given amount of one ingredient back into the machine
   refillIngredient(ingredient: Ingredient, refillAmount: number): void {
     let ingUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
     ingredient.amount += refillAmount;

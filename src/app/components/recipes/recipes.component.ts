@@ -5,7 +5,7 @@ import { IngredientsService } from 'src/app/services/ingredients.service';
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['../../app.component.css']
+  styleUrls: ['../../app.component.css', './recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
   recipes!: Recipe[];
@@ -21,6 +21,6 @@ export class RecipesComponent implements OnInit {
 
   onGet() {
     console.log('get all recipes');
-    this.ingredientsService.getRecipes().subscribe(x => console.log(x))
+    this.ingredientsService.getRecipes().subscribe(recipes => console.log(recipes))
   }
 }
