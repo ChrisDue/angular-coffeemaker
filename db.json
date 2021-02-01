@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Coffee",
       "unit": "g",
-      "amount": 88
+      "amount": 78
     },
     {
       "id": 2,
       "name": "Water",
       "unit": "ml",
-      "amount": 75
+      "amount": 65
     },
     {
       "id": 3,

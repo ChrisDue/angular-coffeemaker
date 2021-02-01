@@ -1,0 +1,18 @@
+<form class="form" (ngSubmit)="onSubmit()">
+    <input type="text" name="name" [(ngModel)]="name" 
+    placeholder="Recipe Name..."> <br>
+    
+    <input type="number" name="waterAmount" [(ngModel)]="waterAmount" 
+    placeholder="Water in ml..."> <br>
+    
+    <input type="number" name="coffeeAmount" [(ngModel)]="coffeeAmount" 
+    placeholder="Coffee in g..."> <br>
+    
+    <input type="number" name="milkAmount" [(ngModel)]="milkAmount" 
+    placeholder="Milk in ml..."> <br>
+    
+    <input type="number" name="cocoaAmount" [(ngModel)]="cocoaAmount" 
+    placeholder="Cocoa in g..."> <br>
+    
+    <input type="submit" value="Create new Recipe" class="btn button1">
+</form>
