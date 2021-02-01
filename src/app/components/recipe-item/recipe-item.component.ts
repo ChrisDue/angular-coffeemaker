@@ -17,8 +17,7 @@ export class RecipeItemComponent implements OnInit {
   }
 
   onBrewSubmit() {
-    console.log('use ingredients of clicked recipe');
+    console.log('Use ingredients of clicked recipe ' + this.recipe.name);
     this.service.brewRecipe(this.recipe);
   }
-  // todo 
 }

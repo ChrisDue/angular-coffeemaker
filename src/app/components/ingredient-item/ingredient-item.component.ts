@@ -18,8 +18,7 @@ export class IngredientItemComponent implements OnInit {
   }
 
   onRefillSubmit() {
-    this.ingredient.amount += this.refillAmount;
-    console.log("Updated ingredient: " + this.ingredient.name + " with " + this.ingredient.amount);
-    this.service.updateIngredient(this.ingredient);
+    // console.log("Updated ingredient: " + this.ingredient.name + " with " + this.ingredient.amount);
+    this.service.refillIngredient(this.ingredient, this.refillAmount);
   }
 }
