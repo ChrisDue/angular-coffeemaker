@@ -81,39 +81,4 @@ p {outline-color:#c06525;
 
 a {
     color: #009579;
-}
-
-/* Submit forms */
-.form {
-    display: flex;
-    padding: 0px 32px 15px 32px;
-}
-  
-/* .form input[type='text'] {
-    flex: 10;
-    padding: 5px;
-} */
-
-.form input[type='number'] {
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    max-width: 150px;
-    /* margin: 4px 2px; */
-    /* border-top-left-radius: 6px; */
-    /* border-bottom-left-radius: 6px; */
-    cursor: pointer;
-}
-
-.form input[type='submit'] {
-    /* border: none; */
-    /* color: white; */
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    /* margin: 4px 2px; */
-    /* border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px; */
-    cursor: pointer;
-}
-  
+}  

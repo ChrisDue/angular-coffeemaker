@@ -5,7 +5,7 @@ import { Ingredient } from 'src/app/models/Ingredient';
 @Component({
   selector: 'app-ingredient-item',
   templateUrl: './ingredient-item.component.html',
-  styleUrls: ['../../app.component.css']
+  styleUrls: ['../../app.component.css', './ingredient-item.component.css']
 })
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient = new Ingredient;
