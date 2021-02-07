@@ -30,8 +30,8 @@ export class AddRecipeComponent implements OnInit {
       milkAmount: this.milkAmount,
       cocoaAmount: this.cocoaAmount,
       isFavorite: false
-    }
+    };
     console.log(enteredRecipe);
-    this.addRecipe.emit(enteredRecipe);
+    // Todo: this.addRecipe.emit(enteredRecipe);
   }
 }

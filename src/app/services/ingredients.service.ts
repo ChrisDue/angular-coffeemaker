@@ -5,6 +5,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ingredient, Id, Name, Unit } from '../models/Ingredient';
 import { Recipe } from '../models/Recipe';
 
+// @Error(exception = ResourceNotFoundException.class, global = true)
+//     public HttpResponse<JsonError> resourceNotFoundHandler(ResourceNotFoundException exception) {
+//         return HttpResponse.notFound(new JsonError(exception.getMessage()));
+//     }
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -58,8 +63,18 @@ export class IngredientsService {
   // Consume ingredients from the machine
   useIngredient(ingredient: Ingredient, usedAmount: number): void {
     const ingUrl = `${this.ingredientsUrl}/${ingredient.id}`;
-    ingredient.amount -= usedAmount;
-    this.http.patch(ingUrl, ingredient, httpOptions).subscribe(res => {
+    // todo: pre-check
+    let newAmount: number = ingredient.amount -= usedAmount;
+    // Error Handler horchen lassen auf Error Types
+    // NotEnoughIngredientsException thrown lassen
+    // Feld einfärben statt ausführen/abschicken
+    // Auch für invalid values
+    let amountJson = {
+      "amount": newAmount
+    }
+    // todo: richtig patchen
+    this.http.patch(ingUrl, amountJson, httpOptions).subscribe(res => {
+      // this.http.patch(ingUrl, ingredient, httpOptions).subscribe(res => {
     });
   }
 
@@ -67,6 +82,7 @@ export class IngredientsService {
   refillIngredient(ingredient: Ingredient, refillAmount: number): void {
     let ingUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
     ingredient.amount += refillAmount;
+    // todo: richtig patchen
     this.http.patch(ingUrl, ingredient).subscribe(res => {
     });
   }
