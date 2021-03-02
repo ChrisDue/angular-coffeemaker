@@ -2,36 +2,33 @@
 
 context('Ingredients', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:4200/ingredients')
+    // cy.visit('http://localhost:4200/ingredients')
   })
 
-  // https://on.cypress.io/interacting-with-elements
+  // copy of "actions"
 
-  it('Refill Coffee', () => {
+  it('Header shows correct texts', () => {
     // TODO
-    // https://on.cypress.io/type
-    cy.get('.action-email')
-      .type('fake@email.com').should('have.value', 'fake@email.com')
+    // Check header title
+    // cy.get('.header')
+    //   .find('h1')
+    //   .should('have.text', 'I\'m Your Smart Coffeemaker')
+    // Check Recipes link
+    cy.get('.header')
+      .find('Recipes')
+      .find()
 
-      // .type() with special character sequences
-      .type('{leftarrow}{rightarrow}{uparrow}{downarrow}')
-      .type('{del}{selectall}{backspace}')
+  })
 
-      // .type() with key modifiers
-      .type('{alt}{option}') //these are equivalent
-      .type('{ctrl}{control}') //these are equivalent
-      .type('{meta}{command}{cmd}') //these are equivalent
-      .type('{shift}')
+  it.only('Refilling and deducting ingredients', () => {
+    cy.visit('http://localhost:4200/');
+    cy.get('html').click();
+    cy.get('a:nth-child(2)').click();
+    cy.get('app-ingredient-item:nth-child(6) .form > .ng-untouched').click();
+    cy.get('.ng-dirty:nth-child(1)').type('5');
+    cy.get('.ng-dirty > .btn').click();
+    cy.get('.ng-dirty:nth-child(2)').submit();
 
-      // Delay each keypress by 0.1 sec
-      .type('slow.typing@email.com', { delay: 100 })
-      .should('have.value', 'slow.typing@email.com')
-
-    cy.get('.action-disabled')
-      // Ignore error checking prior to type
-      // like whether the input is visible or disabled
-      .type('disabled error checking', { force: true })
-      .should('have.value', 'disabled error checking')
   })
 
   it('.focus() - focus on a DOM element', () => {
