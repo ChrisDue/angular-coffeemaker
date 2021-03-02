@@ -4,25 +4,25 @@
       "id": 1,
       "name": "Coffee",
       "unit": "g",
-      "amount": 40
+      "amount": 55
     },
     {
       "id": 2,
       "name": "Water",
       "unit": "ml",
-      "amount": 90
+      "amount": 87
     },
     {
       "id": 3,
       "name": "Milk",
       "unit": "ml",
-      "amount": 420
+      "amount": 440
     },
     {
       "id": 4,
       "name": "Cocoa",
       "unit": "g",
-      "amount": 92
+      "amount": 82
     }
   ],
   "recipes": [
