@@ -2,23 +2,10 @@
 
 context('Ingredients', () => {
   beforeEach(() => {
-    // cy.visit('http://localhost:4200/ingredients')
+    cy.visit('http://localhost:4200')
   })
 
   // copy of "actions"
-
-  it('Header shows correct texts', () => {
-    // TODO
-    // Check header title
-    // cy.get('.header')
-    //   .find('h1')
-    //   .should('have.text', 'I\'m Your Smart Coffeemaker')
-    // Check Recipes link
-    cy.get('.header')
-      .find('Recipes')
-      .find()
-
-  })
 
   it.only('Refilling and deducting ingredients', () => {
     cy.visit('http://localhost:4200/');
