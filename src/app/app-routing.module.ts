@@ -6,7 +6,7 @@ import { IngredientsComponent } from './components/ingredients/ingredients.compo
 import { AboutComponent } from './components/pages/about/about.component';
 
 const routes: Routes = [
-  { path: '', component: TodosComponent },
+  { path: '', component: RecipesComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'ingredients', component: IngredientsComponent },
   { path: 'about', component: AboutComponent }
