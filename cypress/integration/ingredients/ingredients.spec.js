@@ -8,7 +8,6 @@ context('Ingredients', () => {
   // copy of "actions"
 
   it.only('Refilling and deducting ingredients', () => {
-    cy.visit('http://localhost:4200/');
     cy.get('html').click();
     cy.get('a:nth-child(2)').click();
     cy.get('app-ingredient-item:nth-child(6) .form > .ng-untouched').click();

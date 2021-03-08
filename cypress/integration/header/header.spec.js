@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
 
-context('Ingredients', () => {
+context('Header', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4200')
   })
 
   // copy of "actions"
 
-  it.only('Header texts and links are correct', () => {
+  it('shows correct texts and uses correct links', () => {
     // Check header title
     cy.get('.header').find('h1')
       .should('have.text', 'I\'m Your Smart Coffeemaker')
@@ -18,5 +18,20 @@ context('Ingredients', () => {
     cy.url().should('include', '/ingredients')
     cy.get('a').contains('About').click()
     cy.url().should('include', '/about')
+  })
+
+  it.only('looks the same on every page', () => {
+    cy.get('.header')
+      .toMatchImageSnapshot();
+
+
+    // cy.visit('recipes')
+
+
+    // cy.visit('ingredients')
+
+
+    // cy.visit('about')
+
   })
 })
