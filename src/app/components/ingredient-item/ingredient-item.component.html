@@ -1,17 +1,18 @@
 <div class="border-div" id="ingredient-id-{{ingredient.name}}">
     <p>
-        {{ ingredient.name }}: 
-        {{ ingredient.amount }} 
+        {{ ingredient.name }}:
+        {{ ingredient.amount }}
         {{ ingredient.unit }}
     </p>
     <form class="form" (ngSubmit)="onRefillSubmit()">
-        <input type="number" 
-            name="refillAmount" 
-            [(ngModel)]="refillAmount" 
-            placeholder="Amount...">
-        <input type="submit" 
-            value="Refill {{ ingredient.name }}" 
-            class="btn button2">
+        <div class="input-group mb-3">
+            <input class="form-control" type="number" name="refillAmount" [(ngModel)]="refillAmount"
+                placeholder="Amount" aria-label="Amount" aria-describedby="button-addon2">
+            <span class="input-group-text" id="unit-{{ ingredient.name }}">{{ ingredient.unit }}</span>
+            <button class="btn btn-primary" type="submit" id="button-addon2">Refill {{ingredient.name}}</button>
+        </div>
+        <!-- <input type="number" name="refillAmount" [(ngModel)]="refillAmount" placeholder="Amount..."> -->
+        <!-- <input type="submit" value="Refill {{ ingredient.name }}" class="btn button2"> -->
     </form>
 </div>
 <br>
