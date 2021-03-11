@@ -1,18 +1,11 @@
-<!-- <div> -->
-    <h1>Ingredients</h1>
-    <p>
-        You are viewing all the available ingredients.
-    </p>
+<h1>Ingredients</h1>
+<p>You are viewing all the available ingredients.</p>
 
-    <button (click)="onGet()" class="button button1"> .<br> GET <br>. </button>
-    <!-- <button (click)="onAdd()" class="button button1"> .<br> ADD <br>. </button> -->
-    <!-- <button (click)="onUse()" class="button button1"> .<br> USE <br>. </button> -->
+<!-- <button (click)="onGet()" class="button button1"> .<br> GET <br>. </button> -->
+<!-- <button (click)="onAdd()" class="button button1"> .<br> ADD <br>. </button> -->
+<!-- <button (click)="onUse()" class="button button1"> .<br> USE <br>. </button> -->
 
-    <br>
-    <br>
-
-    <app-ingredient-item 
-        *ngFor="let ingredient of ingredients" 
-        [ingredient]="ingredient">
-    </app-ingredient-item>
-<!-- </div> -->
+<app-ingredient-item 
+    *ngFor="let ingredient of ingredients" 
+    [ingredient]="ingredient">
+</app-ingredient-item>

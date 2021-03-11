@@ -1,15 +1,31 @@
+.jumbotron-recipe {
+    /* based on settings from older bootstrap version */
+    padding: 2rem 1rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    background-color: #6f4e37cc;
+    max-width: 26rem;
+    /* background-color: #e9ecef; */
+    border-radius: .3rem;
+}
+
+.jumbotron-ingredient {
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    background-color: #a6f2ffcc;
+    max-width: 26rem;
+    border-radius: .3rem;
+}
+
 .content-div {
     padding: 15px 32px;
 }
 
-.border-div {
+/* .border-div {
     border: 3px solid #c06525;
     border-radius: 15px;
     max-width: 800px;
-    /* outline-color:#c06525; */
-    /* perspective: 1px; */
-    /* overflow: hidden; */
-}
+} */
 
 body {
     --nav-width: 200px;

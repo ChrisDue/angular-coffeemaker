@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Coffee",
       "unit": "g",
-      "amount": 55
+      "amount": 15
     },
     {
       "id": 2,
       "name": "Water",
       "unit": "ml",
-      "amount": 87
+      "amount": 85
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "id": 4,
       "name": "Cocoa",
       "unit": "g",
-      "amount": 82
+      "amount": 80
     }
   ],
   "recipes": [
