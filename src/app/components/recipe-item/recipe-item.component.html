@@ -1,23 +1,40 @@
-<div class="border-div" id="recipe-id-{{recipe.name}}">
+<div class="jumbotron-recipe" id="recipe-{{recipe.name}}">
     <h2>{{ recipe.name }}:</h2>
-    <p> Needed coffee: {{ recipe.coffeeAmount }} g<br>
-        Needed water: {{ recipe.waterAmount }} ml<br>
-        Needed milk: {{ recipe.milkAmount }} ml<br>
-        Needed cocoa: {{ recipe.cocoaAmount }} g<br>
-        <!-- <input type="submit" 
+    <table class="recipe-table">
+        <tr>
+            <td>Needed coffee:</td>
+            <td>&nbsp;{{ recipe.coffeeAmount }}</td>
+            <td>&nbsp;g</td>
+        </tr>
+        <tr>
+            <td>Needed water:</td>
+            <td>&nbsp;{{ recipe.waterAmount }}</td>
+            <td>&nbsp;ml</td>
+        </tr>
+        <tr>
+            <td>Needed milk:</td>
+            <td>&nbsp;{{ recipe.milkAmount }}</td>
+            <td>&nbsp;ml</td>
+        </tr>
+        <tr>
+            <td>Needed cocoa:</td>
+            <td>&nbsp;{{ recipe.cocoaAmount }}</td>
+            <td>&nbsp;g</td>
+        </tr>
+    </table>
+    <!-- <input type="submit" 
         value="Refill {{ ingredient.name }}" 
         class="btn button2"> -->
-        <!-- <button type="submit" class="button button1">Make an {{ recipe.name }}</button> -->
-    </p>
+    <!-- <button type="submit" class="button button1">Make an {{ recipe.name }}</button> -->
+    <!-- </p> -->
 
+    <br>
     <form class="form" (ngSubmit)="onBrewSubmit()">
         <!-- <input type="number" 
             name="refillAmount" 
             [(ngModel)]="refillAmount" 
             placeholder="Amount..."> -->
-        <input type="submit" 
-            value="Brew {{ recipe.name }}" 
-            class="btn button1">
+        <input type="submit" value="Brew {{ recipe.name }}" class="btn btn-success">
     </form>
 </div>
 

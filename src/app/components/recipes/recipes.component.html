@@ -3,25 +3,25 @@
     <p>Wanna start with your morning favorite?</p>
     <button class="button button1">Make a Favorite</button>
 
-    <br><br>
-
-    <h1>Recipes</h1>
-    <p>
-        You are viewing all the available recipes.
-    </p>
-
-    <button (click)="onGet()" class="button button1"> .<br> GET <br>. </button>
+    <!-- <button (click)="onGet()" class="button button1"> .<br> GET <br>. </button> -->
 
     <br><br>
 
+    <h1>Add new recipes here</h1>
     <app-add-recipe>
-        
     </app-add-recipe>
 
     <br><br>
 
-    <app-recipe-item 
-        *ngFor="let recipe of recipes" 
-        [recipe]="recipe">
-    </app-recipe-item>
+    <h1>Recipes</h1>
+    <p>You are viewing all the available recipes.</p>
+
+    <div class="container">
+        <div class="row row-cols-2">
+            <app-recipe-item 
+                *ngFor="let recipe of recipes" 
+                [recipe]="recipe">
+            </app-recipe-item>
+        </div>
+    </div>
 </div>

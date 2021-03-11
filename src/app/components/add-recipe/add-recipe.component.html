@@ -1,18 +1,46 @@
-<form class="form" (ngSubmit)="onSubmit()">
-    <input type="text" name="name" [(ngModel)]="name" 
-    placeholder="Recipe Name...">
-    
-    <input type="number" name="waterAmount" [(ngModel)]="waterAmount" 
-    placeholder="Water in ml...">
-    
-    <input type="number" name="coffeeAmount" [(ngModel)]="coffeeAmount" 
-    placeholder="Coffee in g...">
-    
-    <input type="number" name="milkAmount" [(ngModel)]="milkAmount" 
-    placeholder="Milk in ml...">
-    
-    <input type="number" name="cocoaAmount" [(ngModel)]="cocoaAmount" 
-    placeholder="Cocoa in g...">
-    
+<div class="container jumbotron-add-recipe" (ngSubmit)="onSubmit()">
+
+    <div class="form-floating mb-3">
+        <input type="text" name="name" [(ngModel)]="name" class="form-control" id="newName" placeholder="Recipe Name">
+        <label for="newName">Recipe Name</label>
+    </div>
+    <div class="form-floating">
+        <input type="number" name="waterAmount" [(ngModel)]="waterAmount" class="form-control" id="newWater"
+            placeholder="Water in ml">
+        <label for="newWater">Water in ml</label>
+    </div>
+    <div class="form-floating">
+        <input type="number" name="coffeeAmount" [(ngModel)]="coffeeAmount" class="form-control" id="newCoffee"
+            placeholder="Coffee in g">
+        <label for="newCoffee">Coffee in g</label>
+    </div>
+    <div class="form-floating">
+        <input type="number" name="milkAmount" [(ngModel)]="milkAmount" class="form-control" id="newMilk"
+            placeholder="Milk in ml">
+        <label for="newMilk">Milk in ml</label>
+    </div>
+    <div class="form-floating">
+        <input type="number" name="cocoaAmount" [(ngModel)]="cocoaAmount" class="form-control" id="newCocoa"
+            placeholder="Cocoa in g">
+        <label for="newCocoa">Cocoa in g</label>
+    </div>
+    <br>
+    <input type="submit" value="Create new Recipe" class="btn btn-success">
+
+</div>
+
+
+
+<!-- <form class="form" (ngSubmit)="onSubmit()">
+    <input type="text" name="name" [(ngModel)]="name" placeholder="Recipe Name...">
+
+    <input type="number" name="waterAmount" [(ngModel)]="waterAmount" placeholder="Water in ml...">
+
+    <input type="number" name="coffeeAmount" [(ngModel)]="coffeeAmount" placeholder="Coffee in g...">
+
+    <input type="number" name="milkAmount" [(ngModel)]="milkAmount" placeholder="Milk in ml...">
+
+    <input type="number" name="cocoaAmount" [(ngModel)]="cocoaAmount" placeholder="Cocoa in g...">
+
     <input type="submit" value="Create new Recipe" class="btn button1">
-</form>
+</form> -->
