@@ -1,6 +1,7 @@
-<div class="container jumbotron-add-recipe" (ngSubmit)="onSubmit()">
+<form class="container jumbotron-add-recipe" (ngSubmit)="onAddSubmit()">
 
     <h2 class="whiteTextOverride">Your newest creation</h2>
+
     <div class="form-floating mb-3">
         <input type="text" name="name" [(ngModel)]="name" class="form-control" id="newName" placeholder="Recipe Name">
         <label for="newName">Recipe Name</label>
@@ -27,12 +28,11 @@
     </div>
     <br>
     <input type="submit" value="Create new Recipe" class="btn btn-success">
-
-</div>
-
+</form>
 
 
-<!-- <form class="form" (ngSubmit)="onSubmit()">
+
+<!-- <form class="form" (ngSubmit)="onAddSubmit()">
     <input type="text" name="name" [(ngModel)]="name" placeholder="Recipe Name...">
 
     <input type="number" name="waterAmount" [(ngModel)]="waterAmount" placeholder="Water in ml...">

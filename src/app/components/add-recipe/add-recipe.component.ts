@@ -22,7 +22,7 @@ export class AddRecipeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onAddSubmit() {
     const enteredRecipe: Recipe = {
       name: this.name,
       coffeeAmount: this.coffeeAmount,
