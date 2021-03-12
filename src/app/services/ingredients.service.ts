@@ -32,11 +32,11 @@ export class IngredientsService {
     return this.http.get<Recipe[]>(this.recipesUrl);
   }
 
-  addRecipe(enteredRecipe: Recipe) {
+  async addRecipe(enteredRecipe: Recipe) {
     console.log("Adding recipe: " + enteredRecipe);
 
-    this.http.post<Recipe>(this.recipesUrl, enteredRecipe, httpOptions).subscribe(res => {
-    });
+    await this.http.post<Recipe>(this.recipesUrl, enteredRecipe, httpOptions)
+      .subscribe();
     // TODO? Add name-check?
     // TODO? Add editor?
     // TODO Add delete-button
@@ -80,8 +80,8 @@ export class IngredientsService {
     let amountJson = {
       "amount": ingredient.amount -= usedAmount
     }
-    this.http.patch(ingUrl, amountJson, httpOptions).subscribe(res => {
-    });
+    this.http.patch(ingUrl, amountJson, httpOptions)
+      .subscribe();
   }
 
   // Add a given amount of one ingredient back into the machine
@@ -90,8 +90,8 @@ export class IngredientsService {
     let amountJson = {
       "amount": ingredient.amount += refillAmount
     }
-    this.http.patch(ingUrl, amountJson, httpOptions).subscribe(res => {
-    });
+    this.http.patch(ingUrl, amountJson, httpOptions)
+      .subscribe();
   }
 
   getIngredients(): Observable<Ingredient[]> {

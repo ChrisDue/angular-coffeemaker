@@ -10,69 +10,84 @@
       "id": 2,
       "name": "Water",
       "unit": "ml",
-      "amount": 35
+      "amount": 10
     },
     {
       "id": 3,
       "name": "Milk",
       "unit": "ml",
-      "amount": 420
+      "amount": 455
     },
     {
       "id": 4,
       "name": "Cocoa",
       "unit": "g",
-      "amount": 60
+      "amount": 62
     }
   ],
   "recipes": [
     {
-      "id": 1,
       "name": "Americano",
       "coffeeAmount": 5,
       "waterAmount": 10,
       "milkAmount": 0,
       "cocoaAmount": 0,
-      "isFavorite": false
+      "isFavorite": false,
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Espresso",
       "coffeeAmount": 10,
       "waterAmount": 10,
       "milkAmount": 0,
       "cocoaAmount": 0,
-      "isFavorite": false
+      "isFavorite": false,
+      "id": 2
     },
     {
-      "id": 3,
       "name": "Latte Macchiato",
       "coffeeAmount": 5,
       "waterAmount": 10,
       "milkAmount": 5,
       "cocoaAmount": 0,
-      "isFavorite": false
+      "isFavorite": false,
+      "id": 3
     },
     {
-      "id": 4,
       "name": "Hot Chocolate",
       "coffeeAmount": 0,
       "waterAmount": 0,
       "milkAmount": 10,
       "cocoaAmount": 10,
-      "isFavorite": false
+      "isFavorite": false,
+      "id": 4
     },
     {
-      "name": "Speciale",
-      "coffeeAmount": 2,
-      "waterAmount": 1,
-      "milkAmount": 3,
-      "cocoaAmount": 4,
+      "name": "EEEeeeeee",
+      "coffeeAmount": 0,
+      "waterAmount": 0,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
       "isFavorite": false,
       "id": 5
+    },
+    {
+      "name": "RRRrrrrrrr",
+      "coffeeAmount": 0,
+      "waterAmount": 0,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
+      "isFavorite": false,
+      "id": 6
+    },
+    {
+      "name": "WWWwwww",
+      "coffeeAmount": 0,
+      "waterAmount": 0,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
+      "isFavorite": false,
+      "id": 7
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
