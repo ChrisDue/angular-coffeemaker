@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Ingredient, Id, Name, Unit } from '../models/Ingredient';
+import { Ingredient, Id } from '../models/Ingredient';
 import { Recipe } from '../models/Recipe';
 
 // @Error(exception = ResourceNotFoundException.class, global = true)
@@ -51,6 +51,7 @@ export class IngredientsService {
     // Auch für invalid values
     console.log("> > > Brewing now: " + recipe.name);
 
+    // TODO Improve: getAll -> check ifEnough -> filter and apply changes to stream
     let oldCoffee: Ingredient = await this.getIngredientById(Id.coffee);
     this.useIngredient(oldCoffee, recipe.coffeeAmount);
 
