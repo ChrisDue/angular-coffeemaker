@@ -25,15 +25,15 @@ export class AddRecipeComponent implements OnInit {
 
   onAddSubmit() {
     const enteredRecipe: Recipe = {
-      name: this.name,
-      coffeeAmount: this.coffeeAmount,
-      waterAmount: this.waterAmount,
-      milkAmount: this.milkAmount,
-      cocoaAmount: this.cocoaAmount,
+      name: this.name ? this.name : "Recipe without a Name",
+      coffeeAmount: this.coffeeAmount ? this.coffeeAmount : 0,
+      waterAmount: this.waterAmount ? this.waterAmount : 0,
+      milkAmount: this.milkAmount ? this.milkAmount : 0,
+      cocoaAmount: this.cocoaAmount ? this.cocoaAmount : 0,
       isFavorite: false
     };
     console.log(enteredRecipe);
     this.service.addRecipe(enteredRecipe);
-    // Todo: this.addRecipe.emit(enteredRecipe);
+    location.reload();
   }
 }
