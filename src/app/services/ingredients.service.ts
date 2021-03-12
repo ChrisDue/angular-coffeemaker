@@ -24,7 +24,6 @@ export class IngredientsService {
   ingredientsUrl: string = 'http://localhost:3000/ingredients';
   recipesUrl: string = 'http://localhost:3000/recipes';
 
-
   constructor(private http: HttpClient) { }
 
   /* R E C I P E S */
@@ -33,8 +32,23 @@ export class IngredientsService {
     return this.http.get<Recipe[]>(this.recipesUrl);
   }
 
+  addRecipe(enteredRecipe: Recipe) {
+    console.log("Adding recipe: " + enteredRecipe);
+
+    this.http.post<Recipe>(this.recipesUrl, enteredRecipe, httpOptions).subscribe(res => {
+    });
+    // TODO? Add name-check?
+    // TODO? Add editor?
+    // TODO Add delete-button
+  }
+
   // Consume all ingredients associated to the selected recipe
   async brewRecipe(recipe: Recipe) {
+    // TODO! Pre-Check
+    // Error Handler horchen lassen auf Error Types
+    // NotEnoughIngredientsException thrown lassen
+    // Feld einfärben statt ausführen/abschicken
+    // Auch für invalid values
     console.log("> > > Brewing now: " + recipe.name);
 
     let oldCoffee: Ingredient = await this.getIngredientById(Id.coffee);
@@ -62,28 +76,21 @@ export class IngredientsService {
 
   // Consume ingredients from the machine
   useIngredient(ingredient: Ingredient, usedAmount: number): void {
-    const ingUrl = `${this.ingredientsUrl}/${ingredient.id}`;
-    // todo: pre-check
-    let newAmount: number = ingredient.amount -= usedAmount;
-    // Error Handler horchen lassen auf Error Types
-    // NotEnoughIngredientsException thrown lassen
-    // Feld einfärben statt ausführen/abschicken
-    // Auch für invalid values
+    let ingUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
     let amountJson = {
-      "amount": newAmount
+      "amount": ingredient.amount -= usedAmount
     }
-    // todo: richtig patchen
     this.http.patch(ingUrl, amountJson, httpOptions).subscribe(res => {
-      // this.http.patch(ingUrl, ingredient, httpOptions).subscribe(res => {
     });
   }
 
   // Add a given amount of one ingredient back into the machine
   refillIngredient(ingredient: Ingredient, refillAmount: number): void {
     let ingUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
-    ingredient.amount += refillAmount;
-    // todo: richtig patchen
-    this.http.patch(ingUrl, ingredient).subscribe(res => {
+    let amountJson = {
+      "amount": ingredient.amount += refillAmount
+    }
+    this.http.patch(ingUrl, amountJson, httpOptions).subscribe(res => {
     });
   }
 
