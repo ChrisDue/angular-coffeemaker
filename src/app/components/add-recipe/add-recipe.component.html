@@ -1,28 +1,29 @@
 <div class="container jumbotron-add-recipe" (ngSubmit)="onSubmit()">
 
+    <h2 class="whiteTextOverride">Your newest creation</h2>
     <div class="form-floating mb-3">
         <input type="text" name="name" [(ngModel)]="name" class="form-control" id="newName" placeholder="Recipe Name">
         <label for="newName">Recipe Name</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating indented">
         <input type="number" name="waterAmount" [(ngModel)]="waterAmount" class="form-control" id="newWater"
             placeholder="Water in ml">
-        <label for="newWater">Water in ml</label>
+        <label for="newWater">Amount of Water in ml</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating indented">
         <input type="number" name="coffeeAmount" [(ngModel)]="coffeeAmount" class="form-control" id="newCoffee"
             placeholder="Coffee in g">
-        <label for="newCoffee">Coffee in g</label>
+        <label for="newCoffee">Amount of Coffee in g</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating indented">
         <input type="number" name="milkAmount" [(ngModel)]="milkAmount" class="form-control" id="newMilk"
             placeholder="Milk in ml">
-        <label for="newMilk">Milk in ml</label>
+        <label for="newMilk">Amount of Milk in ml</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating indented">
         <input type="number" name="cocoaAmount" [(ngModel)]="cocoaAmount" class="form-control" id="newCocoa"
             placeholder="Cocoa in g">
-        <label for="newCocoa">Cocoa in g</label>
+        <label for="newCocoa">Amount of Cocoa in g</label>
     </div>
     <br>
     <input type="submit" value="Create new Recipe" class="btn btn-success">

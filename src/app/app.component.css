@@ -29,8 +29,14 @@
     border-radius: .3rem;
 }
 
-.recipe-table {
+.indented {
     margin-left: 3%;
+    margin-right: 3%;
+}
+
+h2.whiteTextOverride
+{
+ color: ivory !important;
 }
 
 .content-div {

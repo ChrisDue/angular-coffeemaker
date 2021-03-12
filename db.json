@@ -16,13 +16,13 @@
       "id": 3,
       "name": "Milk",
       "unit": "ml",
-      "amount": 440
+      "amount": 420
     },
     {
       "id": 4,
       "name": "Cocoa",
       "unit": "g",
-      "amount": 80
+      "amount": 60
     }
   ],
   "recipes": [
