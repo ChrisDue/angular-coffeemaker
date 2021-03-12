@@ -21,6 +21,6 @@ export class RecipesComponent implements OnInit {
 
   onGet() {
     console.log('get all recipes');
-    this.ingredientsService.getRecipes().subscribe(recipes => console.log(recipes))
+    this.ingredientsService.getRecipes().subscribe(recipes => console.log(recipes));
   }
 }
