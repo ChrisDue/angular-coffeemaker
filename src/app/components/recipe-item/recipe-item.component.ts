@@ -13,8 +13,7 @@ export class RecipeItemComponent implements OnInit {
 
   constructor(private service: IngredientsService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onBrewSubmit(): void {
     console.log('Use ingredients for ' + this.recipe.name);

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from 'src/app/models/Recipe';
+import { IngredientsService } from 'src/app/services/ingredients.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -8,7 +9,8 @@ import { Recipe } from 'src/app/models/Recipe';
 })
 export class AddRecipeComponent implements OnInit {
   // any because not formatted as our module with id, etc.
-  @Output() addRecipe: EventEmitter<any> = new EventEmitter();
+  // @Output() addRecipe: EventEmitter<any> = new EventEmitter();
+
 
   name!: string;
   coffeeAmount!: number;
@@ -17,10 +19,9 @@ export class AddRecipeComponent implements OnInit {
   cocoaAmount!: number;
   isFavorite!: boolean;
 
-  constructor() { }
+  constructor(private service: IngredientsService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   onAddSubmit() {
     const enteredRecipe: Recipe = {
@@ -32,6 +33,7 @@ export class AddRecipeComponent implements OnInit {
       isFavorite: false
     };
     console.log(enteredRecipe);
+    this.service.addRecipe(enteredRecipe);
     // Todo: this.addRecipe.emit(enteredRecipe);
   }
 }
