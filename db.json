@@ -88,6 +88,15 @@
       "cocoaAmount": 0,
       "isFavorite": false,
       "id": 7
+    },
+    {
+      "name": "Name 1",
+      "coffeeAmount": 0,
+      "waterAmount": 1,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
+      "isFavorite": false,
+      "id": 8
     }
   ]
 }
