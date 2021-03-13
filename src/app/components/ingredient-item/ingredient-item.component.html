@@ -1,19 +1,20 @@
-<div class="jumbotron-ingredient" id="ingredient-{{ingredient.name}}">
+<div class="jumbotron-ingredient" id="ingredient-{{ ingredient.name }}">
 
     <form class="form" id="form-{{ ingredient.name }}" (ngSubmit)="onRefillSubmit()">
         <label for="unit-{{ ingredient.name }}" class="form-label">
             {{ ingredient.name }}: {{ ingredient.amount }}{{ ingredient.unit }}
         </label>
 
-        <div class="input-group mb-3">
-            <input class="form-control" type="number" name="refillAmount" [(ngModel)]="refillAmount"
-                placeholder="Amount" aria-label="Amount" aria-describedby="button-addon2">
+        <div class="input-group">
+            <input type="number" class="form-control" id="amount-{{ ingredient.name }}" placeholder="Amount" ngModel name="refillAmount"
+                #refillAmount="ngModel" (change)="log(refillAmount)">
 
             <span class="input-group-text" id="unit-{{ ingredient.name }}" width="10px">
                 {{ ingredient.unit }}</span>
 
-            <button class="btn btn-primary d-md-block" type="submit" id="button-{{ ingredient.name }}">
+            <button class="btn btn-primary" type="submit" id="button-{{ ingredient.name }}">
                 Refill {{ingredient.name}}</button>
+            <div class="alert alert-danger" *ngIf="refillAmount.touched">An amount is required</div>
         </div>
         <!-- <input type="number" name="refillAmount" [(ngModel)]="refillAmount" placeholder="Amount..."> -->
         <!-- <input type="submit" value="Refill {{ ingredient.name }}" class="btn button2"> -->

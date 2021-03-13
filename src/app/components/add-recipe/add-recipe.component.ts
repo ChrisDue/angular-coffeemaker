@@ -23,6 +23,8 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  log(x: any) { console.log(x); }
+
   onAddSubmit() {
     const enteredRecipe: Recipe = {
       name: this.name ? this.name : "Recipe without a Name",

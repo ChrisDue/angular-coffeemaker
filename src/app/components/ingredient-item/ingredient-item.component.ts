@@ -14,8 +14,9 @@ export class IngredientItemComponent implements OnInit {
 
   constructor(private service: IngredientsService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
+  log(x: any) { console.log(x); }
 
   onRefillSubmit() {
     // console.log("Updated ingredient: " + this.ingredient.name + " with " + this.ingredient.amount);

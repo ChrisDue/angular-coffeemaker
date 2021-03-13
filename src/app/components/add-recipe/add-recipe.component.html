@@ -3,28 +3,48 @@
     <h2 class="whiteTextOverride">Your newest creation</h2>
 
     <div class="form-floating mb-3">
-        <input type="text" name="name" [(ngModel)]="name" class="form-control" id="name" placeholder="Recipe Name">
-        <label for="name">Recipe Name</label>
+        <input required type="text" minlength="2" maxlength="10" class="form-control" id="name" placeholder=" " ngModel
+            name="name" #name="ngModel" (change)="log(name)">
+        <label for="name">
+            Recipe Name</label>
+        <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+            <div *ngIf="name.errors?.required">
+                Recipes require a name.</div>
+            <div *ngIf="name.errors?.minlength">
+                Recipe names need at least {{ name.errors?.minlength.requiredLength }} characters.</div>
+        </div>
     </div>
     <div class="form-floating indented">
-        <input type="number" name="coffeeAmount" [(ngModel)]="coffeeAmount" class="form-control" id="coffeeAmount"
-        placeholder="Coffee in g">
-        <label for="coffeeAmount">Amount of Coffee in g</label>
+        <input type="number" class="form-control" id="coffeeAmount" placeholder=" " ngModel name="coffeeAmount"
+            #coffeeAmount="ngModel" (change)="log(coffeeAmount)">
+        <label for="coffeeAmount">
+            Amount of Coffee in g</label>
+        <div class="alert alert-danger" *ngIf="coffeeAmount.touched">
+            An amount is required</div>
     </div>
     <div class="form-floating indented">
-        <input type="number" name="waterAmount" [(ngModel)]="waterAmount" class="form-control" id="waterAmount"
-            placeholder="Water in ml">
-        <label for="waterAmount">Amount of Water in ml</label>
+        <input type="number" class="form-control" id="waterAmount" placeholder=" " ngModel name="waterAmount"
+            #waterAmount="ngModel" (change)="log(waterAmount)">
+        <label for="waterAmount">
+            Amount of Water in ml</label>
+        <div class="alert alert-danger" *ngIf="waterAmount.touched">
+            An amount is required</div>
     </div>
     <div class="form-floating indented">
-        <input type="number" name="milkAmount" [(ngModel)]="milkAmount" class="form-control" id="milkAmount"
-            placeholder="Milk in ml">
-        <label for="milkAmount">Amount of Milk in ml</label>
+        <input type="number" class="form-control" id="milkAmount" placeholder=" " ngModel name="milkAmount"
+            #milkAmount="ngModel" (change)="log(milkAmount)">
+        <label for="milkAmount">
+            Amount of Milk in ml</label>
+        <div class="alert alert-danger" *ngIf="milkAmount.touched">
+            An amount is required</div>
     </div>
     <div class="form-floating indented">
-        <input type="number" name="cocoaAmount" [(ngModel)]="cocoaAmount" class="form-control" id="cocoaAmount"
-            placeholder="Cocoa in g">
-        <label for="cocoaAmount">Amount of Cocoa in g</label>
+        <input type="number" class="form-control" id="cocoaAmount" placeholder=" " ngModel name="cocoaAmount"
+            #cocoaAmount="ngModel" (change)="log(cocoaAmount)">
+        <label for="cocoaAmount">
+            Amount of Cocoa in g</label>
+        <div class="alert alert-danger" *ngIf="cocoaAmount.touched">
+            An amount is required</div>
     </div>
     <br>
     <input type="submit" value="Create new Recipe" class="btn btn-success">

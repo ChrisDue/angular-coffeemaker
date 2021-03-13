@@ -1,3 +1,7 @@
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
+
 .jumbotron-add-recipe {
     /* based on settings from older bootstrap version */
     background-color: #6f4e37cc;
@@ -24,6 +28,7 @@
     background-color: #a6f2ffcc;
     padding: 1rem 2rem;
     max-width: 26rem;
+    margin-bottom: 1rem;
     border-radius: .3rem;
 }
 

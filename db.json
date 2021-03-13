@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Coffee",
       "unit": "g",
-      "amount": -5
+      "amount": null
     },
     {
       "id": 2,
       "name": "Water",
       "unit": "ml",
-      "amount": 10
+      "amount": null
     },
     {
       "id": 3,
@@ -63,40 +63,13 @@
       "id": 4
     },
     {
-      "name": "EEEeeeeee",
+      "name": "Recipe without a Name",
       "coffeeAmount": 0,
       "waterAmount": 0,
       "milkAmount": 0,
       "cocoaAmount": 0,
       "isFavorite": false,
       "id": 5
-    },
-    {
-      "name": "RRRrrrrrrr",
-      "coffeeAmount": 0,
-      "waterAmount": 0,
-      "milkAmount": 0,
-      "cocoaAmount": 0,
-      "isFavorite": false,
-      "id": 6
-    },
-    {
-      "name": "WWWwwww",
-      "coffeeAmount": 0,
-      "waterAmount": 0,
-      "milkAmount": 0,
-      "cocoaAmount": 0,
-      "isFavorite": false,
-      "id": 7
-    },
-    {
-      "name": "Name 1",
-      "coffeeAmount": 0,
-      "waterAmount": 1,
-      "milkAmount": 0,
-      "cocoaAmount": 0,
-      "isFavorite": false,
-      "id": 8
     }
   ]
 }
