@@ -9,14 +9,14 @@ import { IngredientsService } from 'src/app/services/ingredients.service';
 })
 export class AddRecipeComponent implements OnInit {
   // any because not formatted as our module with id, etc.
-  // @Output() addRecipe: EventEmitter<any> = new EventEmitter();
+  @Output() addRecipe: EventEmitter<any> = new EventEmitter();
 
 
-  name!: string;
-  coffeeAmount!: number;
-  waterAmount!: number;
-  milkAmount!: number;
-  cocoaAmount!: number;
+  nameValue!: string;
+  coffeeAmountValue!: number;
+  waterAmountValue!: number;
+  milkAmountValue!: number;
+  cocoaAmountValue!: number;
   isFavorite!: boolean;
 
   constructor(private service: IngredientsService) { }
@@ -27,11 +27,11 @@ export class AddRecipeComponent implements OnInit {
 
   onAddSubmit() {
     const enteredRecipe: Recipe = {
-      name: this.name ? this.name : "Recipe without a Name",
-      coffeeAmount: this.coffeeAmount ? this.coffeeAmount : 0,
-      waterAmount: this.waterAmount ? this.waterAmount : 0,
-      milkAmount: this.milkAmount ? this.milkAmount : 0,
-      cocoaAmount: this.cocoaAmount ? this.cocoaAmount : 0,
+      name: this.nameValue ? this.nameValue : "No Name",
+      coffeeAmount: this.coffeeAmountValue ? this.coffeeAmountValue : 0,
+      waterAmount: this.waterAmountValue ? this.waterAmountValue : 0,
+      milkAmount: this.milkAmountValue ? this.milkAmountValue : 0,
+      cocoaAmount: this.cocoaAmountValue ? this.cocoaAmountValue : 0,
       isFavorite: false
     };
     console.log(enteredRecipe);

@@ -3,51 +3,42 @@
     <h2 class="whiteTextOverride">Your newest creation</h2>
 
     <div class="form-floating mb-3">
-        <input required type="text" minlength="2" maxlength="10" class="form-control" id="name" placeholder=" " ngModel
-            name="name" #name="ngModel" (change)="log(name)">
-        <label for="name">
-            Recipe Name</label>
+        <input required type="text" minlength="2" maxlength="12" class="form-control" id="name" placeholder=" "
+            [(ngModel)]="nameValue" ngModel name="name" #name="ngModel" (change)="log(name)">
+        <label for="name">Recipe Name</label>
         <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
             <div *ngIf="name.errors?.required">
                 Recipes require a name.</div>
             <div *ngIf="name.errors?.minlength">
-                Recipe names need at least {{ name.errors?.minlength.requiredLength }} characters.</div>
+                Recipe names need {{ name.errors?.minlength.requiredLength }} to 12 characters.</div>
         </div>
     </div>
     <div class="form-floating indented">
-        <input type="number" class="form-control" id="coffeeAmount" placeholder=" " ngModel name="coffeeAmount"
-            #coffeeAmount="ngModel" (change)="log(coffeeAmount)">
-        <label for="coffeeAmount">
-            Amount of Coffee in g</label>
-        <div class="alert alert-danger" *ngIf="coffeeAmount.touched">
-            An amount is required</div>
+        <input type="number" class="form-control" id="coffeeAmount" placeholder=" " [(ngModel)]="coffeeAmountValue"
+            ngModel name="coffeeAmount" #coffeeAmount="ngModel" (change)="log(coffeeAmount)">
+        <label for="coffeeAmount">Amount of Coffee in g</label>
     </div>
     <div class="form-floating indented">
-        <input type="number" class="form-control" id="waterAmount" placeholder=" " ngModel name="waterAmount"
-            #waterAmount="ngModel" (change)="log(waterAmount)">
-        <label for="waterAmount">
-            Amount of Water in ml</label>
-        <div class="alert alert-danger" *ngIf="waterAmount.touched">
-            An amount is required</div>
+        <input type="number" class="form-control" id="waterAmount" placeholder=" " [(ngModel)]="waterAmountValue"
+            ngModel name="waterAmount" #waterAmount="ngModel" (change)="log(waterAmount)">
+        <label for="waterAmount">Amount of Water in ml</label>
     </div>
     <div class="form-floating indented">
-        <input type="number" class="form-control" id="milkAmount" placeholder=" " ngModel name="milkAmount"
-            #milkAmount="ngModel" (change)="log(milkAmount)">
-        <label for="milkAmount">
-            Amount of Milk in ml</label>
-        <div class="alert alert-danger" *ngIf="milkAmount.touched">
-            An amount is required</div>
+        <input type="number" class="form-control" id="milkAmount" placeholder=" " [(ngModel)]="milkAmountValue" ngModel
+            name="milkAmount" #milkAmount="ngModel" (change)="log(milkAmount)">
+        <label for="milkAmount">Amount of Milk in ml</label>
     </div>
     <div class="form-floating indented">
-        <input type="number" class="form-control" id="cocoaAmount" placeholder=" " ngModel name="cocoaAmount"
-            #cocoaAmount="ngModel" (change)="log(cocoaAmount)">
-        <label for="cocoaAmount">
-            Amount of Cocoa in g</label>
-        <div class="alert alert-danger" *ngIf="cocoaAmount.touched">
-            An amount is required</div>
+        <input type="number" class="form-control" id="cocoaAmount" placeholder=" " [(ngModel)]="cocoaAmountValue"
+            ngModel name="cocoaAmount" #cocoaAmount="ngModel" (change)="log(cocoaAmount)">
+        <label for="cocoaAmount">Amount of Cocoa in g</label>
     </div>
     <br>
-    <input type="submit" value="Create new Recipe" class="btn btn-success">
+    <div class="alert alert-warning"
+        *ngIf="!name.valid || !coffeeAmount.viewModel && !waterAmount.viewModel && !milkAmount.viewModel && !cocoaAmount.viewModel">
+        Recipes need a Name and at least one Ingredient.</div>
+    <input type="submit" class="btn btn-success" value="Create new Recipe"
+        [disabled]="!name.valid || !coffeeAmount.viewModel && !waterAmount.viewModel && !milkAmount.viewModel && !cocoaAmount.viewModel">
 </form>
 
 
