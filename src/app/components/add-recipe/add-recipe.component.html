@@ -34,11 +34,17 @@
         <label for="cocoaAmount">Amount of Cocoa in g</label>
     </div>
     <br>
-    <div class="alert alert-warning"
-        *ngIf="!name.valid || !coffeeAmount.viewModel && !waterAmount.viewModel && !milkAmount.viewModel && !cocoaAmount.viewModel">
+    <div class="alert alert-warning" *ngIf="!name.valid 
+        || !coffeeAmount.viewModel 
+        && !waterAmount.viewModel 
+        && !milkAmount.viewModel 
+        && !cocoaAmount.viewModel">
         Recipes need a Name and at least one Ingredient.</div>
-    <input type="submit" class="btn btn-success" value="Create new Recipe"
-        [disabled]="!name.valid || !coffeeAmount.viewModel && !waterAmount.viewModel && !milkAmount.viewModel && !cocoaAmount.viewModel">
+    <input type="submit" class="btn btn-success" id="submit-new-recipe" value="Create new Recipe" [disabled]="!name.valid 
+        || !coffeeAmount.viewModel 
+        && !waterAmount.viewModel 
+        && !milkAmount.viewModel 
+        && !cocoaAmount.viewModel">
 </form>
 
 
