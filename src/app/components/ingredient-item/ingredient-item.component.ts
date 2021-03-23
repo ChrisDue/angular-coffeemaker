@@ -10,7 +10,7 @@ import { Ingredient } from 'src/app/models/Ingredient';
 export class IngredientItemComponent implements OnInit {
   @Input() ingredient: Ingredient = new Ingredient;
 
-  refillAmount!: number;
+  refillAmountValue!: number;
 
   constructor(private service: IngredientsService) { }
 
@@ -20,6 +20,6 @@ export class IngredientItemComponent implements OnInit {
 
   onRefillSubmit() {
     // console.log("Updated ingredient: " + this.ingredient.name + " with " + this.ingredient.amount);
-    this.service.refillIngredient(this.ingredient, this.refillAmount);
+    this.service.refillIngredient(this.ingredient, this.refillAmountValue);
   }
 }
