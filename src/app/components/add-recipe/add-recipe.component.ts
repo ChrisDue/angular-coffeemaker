@@ -11,7 +11,6 @@ export class AddRecipeComponent implements OnInit {
   // any because not formatted as our module with id, etc.
   @Output() addRecipe: EventEmitter<any> = new EventEmitter();
 
-
   nameValue!: string;
   coffeeAmountValue!: number;
   waterAmountValue!: number;

@@ -6,15 +6,17 @@
         </label>
 
         <div class="input-group">
-            <input type="number" class="form-control" id="amount-{{ ingredient.name }}" placeholder="Amount" [(ngModel)]="refillAmountValue" 
-            ngModel name="refillAmount" #refillAmount="ngModel" (change)="log(refillAmount)">
+            <input type="number" class="form-control" id="amount-{{ ingredient.name }}" placeholder="Amount"
+                [(ngModel)]="refillAmountValue" ngModel name="refillAmount" #refillAmount="ngModel"
+                (change)="log(refillAmount)">
 
             <span class="input-group-text" id="unit-{{ ingredient.name }}" width="10px">
                 {{ ingredient.unit }}</span>
 
-            <button class="btn btn-primary" type="submit" id="button-{{ ingredient.name }}">
+            <button type="submit" class="btn btn-primary" id="button-{{ ingredient.name }}">
                 Refill {{ingredient.name}}</button>
-            <div class="alert alert-danger" *ngIf="refillAmount.touched && !refillAmount.viewModel">An amount is required</div>
+            <div class="alert alert-danger" *ngIf="refillAmount.touched && !refillAmount.viewModel">An amount is
+                required</div>
         </div>
         <!-- <input type="number" name="refillAmount" [(ngModel)]="refillAmount" placeholder="Amount..."> -->
         <!-- <input type="submit" value="Refill {{ ingredient.name }}" class="btn button2"> -->
