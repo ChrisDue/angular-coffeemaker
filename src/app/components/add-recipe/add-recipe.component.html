@@ -17,25 +17,25 @@
         <input type="number" class="form-control" id="coffeeAmount" min="0" placeholder=" "
             [(ngModel)]="coffeeAmountValue" ngModel name="coffeeAmount" #coffeeAmount="ngModel"
             (change)="log(coffeeAmount)"
-            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 && Math.abs(this.value) <= 1500 ? Math.abs(this.value) : null">
+            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="coffeeAmount">Amount of Coffee in g</label>
     </div>
     <div class="form-floating indented">
         <input type="number" class="form-control" id="waterAmount" min="0" placeholder=" "
             [(ngModel)]="waterAmountValue" ngModel name="waterAmount" #waterAmount="ngModel" (change)="log(waterAmount)"
-            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 && Math.abs(this.value) <= 1500 ? Math.abs(this.value) : null">
+            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="waterAmount">Amount of Water in ml</label>
     </div>
     <div class="form-floating indented">
         <input type="number" class="form-control" id="milkAmount" min="0" placeholder=" " [(ngModel)]="milkAmountValue"
             ngModel name="milkAmount" #milkAmount="ngModel" (change)="log(milkAmount)"
-            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 && Math.abs(this.value) <= 1500 ? Math.abs(this.value) : null">
+            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="milkAmount">Amount of Milk in ml</label>
     </div>
     <div class="form-floating indented">
         <input type="number" class="form-control" id="cocoaAmount" placeholder=" " [(ngModel)]="cocoaAmountValue"
             ngModel name="cocoaAmount" #cocoaAmount="ngModel" (change)="log(cocoaAmount)" min="0"
-            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 && Math.abs(this.value) <= 1500 ? Math.abs(this.value) : null">
+            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="cocoaAmount">Amount of Cocoa in g</label>
     </div>
     <br>
