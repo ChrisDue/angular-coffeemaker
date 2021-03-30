@@ -4,25 +4,25 @@
       "id": 1,
       "name": "Coffee",
       "unit": "g",
-      "amount": 1
+      "amount": 10
     },
     {
       "id": 2,
       "name": "Water",
       "unit": "ml",
-      "amount": 6
+      "amount": 3
     },
     {
       "id": 3,
       "name": "Milk",
       "unit": "ml",
-      "amount": 2
+      "amount": 11
     },
     {
       "id": 4,
       "name": "Cocoa",
       "unit": "g",
-      "amount": 8
+      "amount": 13
     }
   ],
   "recipes": [
@@ -61,33 +61,6 @@
       "cocoaAmount": 10,
       "isFavorite": false,
       "id": 4
-    },
-    {
-      "name": "ABCDEF GHIJK",
-      "coffeeAmount": 2,
-      "waterAmount": 9999999,
-      "milkAmount": 0,
-      "cocoaAmount": -1,
-      "isFavorite": false,
-      "id": 7
-    },
-    {
-      "name": "Name 1111111",
-      "coffeeAmount": 111,
-      "waterAmount": 222,
-      "milkAmount": 333,
-      "cocoaAmount": 0,
-      "isFavorite": false,
-      "id": 8
-    },
-    {
-      "name": "33",
-      "coffeeAmount": 3,
-      "waterAmount": 0,
-      "milkAmount": 3,
-      "cocoaAmount": 2,
-      "isFavorite": false,
-      "id": 9
     }
   ]
 }
