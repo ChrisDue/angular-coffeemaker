@@ -50,30 +50,43 @@ export class IngredientsService {
 
     // Consume all ingredients associated to the selected recipe
     async brewRecipe(recipe: Recipe): Promise<void> {
-        console.log("> Updating Ingredients.");
-        this.updateIngredientsList();
-        console.log(this.ingredientsList);
+        // console.log("> Updating Ingredients.");
+        // this.updateIngredientsList();
+        // console.log(this.ingredientsList);
 
         // TODO getAll -> check ifEnough -> filter and apply changes to stream
         console.log("> > Can I brew " + recipe.name + " ?");
-        let missingIngredient: String = NONE_STRING;
-        missingIngredient = this.enoughIngredientsAvailable(recipe);
-        if (missingIngredient == INVALID_STRING) {
-            console.log("Invalid ingredient! Don't know " + missingIngredient);
-            alert("Invalid ingredient! Don't know " + missingIngredient);
-            return;
-        } else if (missingIngredient != NONE_STRING) {
+        let missingIngredient: string = await this.enoughIngredientsAvailable(recipe);
+        // if (missingIngredient == INVALID_STRING) {
+        //     console.log("Invalid ingredient! Don't know " + missingIngredient);
+        //     alert("Invalid ingredient! Don't know " + missingIngredient);
+        // } else 
+        if (missingIngredient != NONE_STRING) {
             console.log("Not enough ingredients! Need more " + missingIngredient);
             alert("Not enough ingredients! Need more " + missingIngredient);
-            return;
+        } else {
+            this.useNeededIngredients(recipe);
+            console.log("< < Done brewing " + recipe.name)
         }
-        console.log("Enough ingredients.");
-
-        console.log("> > > Brewing now: " + recipe.name);
-        this.useNeededIngredients(recipe);
-        console.log("< < < Done brewing " + recipe.name)
     }
 
+    /*  */
+    async enoughIngredientsAvailable(recipe: Recipe): Promise<string> {
+        let result: string = NONE_STRING;
+
+        let currentCoffee: Ingredient = await this.getIngredientById(Id.coffee);
+        if (currentCoffee.amount < recipe.coffeeAmount) return currentCoffee.name;
+        let currentWater: Ingredient = await this.getIngredientById(Id.water);
+        if (currentWater.amount < recipe.waterAmount) return currentWater.name;
+        let currentMilk: Ingredient = await this.getIngredientById(Id.milk);
+        if (currentMilk.amount < recipe.milkAmount) return currentMilk.name;
+        let currentCocoa: Ingredient = await this.getIngredientById(Id.cocoa);
+        if (currentCocoa.amount < recipe.cocoaAmount) return currentCocoa.name;
+
+        return result;
+    }
+
+    /*  */
     async useNeededIngredients(recipe: Recipe): Promise<void> {
         let oldCoffee: Ingredient = await this.getIngredientById(Id.coffee);
         this.useIngredient(oldCoffee, recipe.coffeeAmount);
@@ -85,7 +98,17 @@ export class IngredientsService {
         this.useIngredient(oldCocoa, recipe.cocoaAmount);
     }
 
-
+    /* getStringFromPromise(promise: Promise<string>): string {
+            let dataString: string = "";
+            promise.then((data) => { dataString = data; });
+            return dataString;
+        }
+    
+        getIngredientFromPromise(promise: Promise<Ingredient>): Ingredient {
+            let dataString: Ingredient = new Ingredient();
+            promise.then((data) => { dataString = data; });
+            return dataString;
+        } */
 
     /* I N G R E D I E N T S */
     // Get one ingredient specified by the ID received 
@@ -113,50 +136,6 @@ export class IngredientsService {
         }
         this.http.patch(ingUrl, amountJson, httpOptions)
             .subscribe();
-    }
-
-
-
-    enoughIngredientsAvailable(recipe: Recipe): string {
-        let result: string = NONE_STRING;
-        // let ingredients: Ingredient[] = Promise.all(this.getIngredients);
-        this.ingredientsList.forEach((ingredient: Ingredient) => {
-            switch (ingredient.name) {
-                case "Coffee":
-                    console.log(ingredient.amount + " " + ingredient.name + " given.");
-                    console.log(recipe.coffeeAmount + " " + ingredient.name + " needed.");
-                    if (ingredient.amount < recipe.coffeeAmount) {
-                        result = ingredient.name;
-                    }
-                    break;
-                case "Water":
-                    console.log(ingredient.amount + " " + ingredient.name + " given.");
-                    console.log(recipe.waterAmount + " " + ingredient.name + " needed.");
-                    if (ingredient.amount < recipe.waterAmount) {
-                        result = ingredient.name;
-                    }
-                    break;
-                case "Milk":
-                    console.log(ingredient.amount + " " + ingredient.name + " given.");
-                    console.log(recipe.milkAmount + " " + ingredient.name + " needed.");
-                    if (ingredient.amount < recipe.milkAmount) {
-                        result = ingredient.name;
-                    }
-                    break;
-                case "Cocoa":
-                    console.log(ingredient.amount + " " + ingredient.name + " given.");
-                    console.log(recipe.cocoaAmount + " " + ingredient.name + " needed.");
-                    if (ingredient.amount < recipe.cocoaAmount) {
-                        result = ingredient.name;
-                    }
-                    break;
-                default:
-                    result = INVALID_STRING;
-                    console.log("Invalid Ingredient!");
-                    break;
-            };
-        });
-        return result;
     }
 
     getIngredients(): Observable<Ingredient[]> {
