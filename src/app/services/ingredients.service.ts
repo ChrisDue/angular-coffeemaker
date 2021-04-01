@@ -5,19 +5,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ingredient, Id } from '../models/Ingredient';
 import { Recipe } from '../models/Recipe';
 
-// @Error(exception = ResourceNotFoundException.class, global = true)
-//     public HttpResponse<JsonError> resourceNotFoundHandler(ResourceNotFoundException exception) {
-//         return HttpResponse.notFound(new JsonError(exception.getMessage()));
-//     }
-
+const NONE_STRING: string = "None";
 const httpOptions = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json'
     })
 }
 
-const NONE_STRING: string = "None";
-const INVALID_STRING: string = "Invalid";
 
 @Injectable({
     providedIn: 'root'
@@ -26,51 +20,46 @@ const INVALID_STRING: string = "Invalid";
 export class IngredientsService {
     ingredientsUrl: string = 'http://localhost:3000/ingredients';
     recipesUrl: string = 'http://localhost:3000/recipes';
-    ingredientsList!: Ingredient[];
 
     constructor(private http: HttpClient) {
-        this.updateIngredientsList();
     }
 
-    /* R E C I P E S */
-    // Get all existing recipes 
+    /**
+     *  R E C I P E S 
+     */
+
+    /* Get all existing recipes */
     getRecipes(): Observable<Recipe[]> {
         return this.http.get<Recipe[]>(this.recipesUrl);
     }
 
+    /* Add given recipe to DB of existing ones */
     async addRecipe(enteredRecipe: Recipe): Promise<void> {
         console.log("Adding recipe: " + enteredRecipe);
 
-        await this.http.post<Recipe>(this.recipesUrl, enteredRecipe, httpOptions)
+        this.http.post<Recipe>(this.recipesUrl, enteredRecipe, httpOptions)
             .subscribe();
         ///// DON'T Add name-check
         ///// DON'T Add editor
         // TODO Add delete-button
+        // TODO Avoid comma-values
     }
 
-    // Consume all ingredients associated to the selected recipe
+    /* Consume ingredients of given recipe, if all are sufficient, otherwise alert */
     async brewRecipe(recipe: Recipe): Promise<void> {
-        // console.log("> Updating Ingredients.");
-        // this.updateIngredientsList();
-        // console.log(this.ingredientsList);
-
-        // TODO getAll -> check ifEnough -> filter and apply changes to stream
         console.log("> > Can I brew " + recipe.name + " ?");
         let missingIngredient: string = await this.enoughIngredientsAvailable(recipe);
-        // if (missingIngredient == INVALID_STRING) {
-        //     console.log("Invalid ingredient! Don't know " + missingIngredient);
-        //     alert("Invalid ingredient! Don't know " + missingIngredient);
-        // } else 
+
         if (missingIngredient != NONE_STRING) {
-            console.log("Not enough ingredients! Need more " + missingIngredient);
             alert("Not enough ingredients! Need more " + missingIngredient);
         } else {
             this.useNeededIngredients(recipe);
             console.log("< < Done brewing " + recipe.name)
+            alert("☕ Enjoy your freshly brewed " + recipe.name + "! ☕");
         }
     }
 
-    /*  */
+    /* Return name of insufficient ingredient, if there is one */
     async enoughIngredientsAvailable(recipe: Recipe): Promise<string> {
         let result: string = NONE_STRING;
 
@@ -86,7 +75,7 @@ export class IngredientsService {
         return result;
     }
 
-    /*  */
+    /* Reduce amounts of all ingredients of given recipe */
     async useNeededIngredients(recipe: Recipe): Promise<void> {
         let oldCoffee: Ingredient = await this.getIngredientById(Id.coffee);
         this.useIngredient(oldCoffee, recipe.coffeeAmount);
@@ -98,27 +87,20 @@ export class IngredientsService {
         this.useIngredient(oldCocoa, recipe.cocoaAmount);
     }
 
-    /* getStringFromPromise(promise: Promise<string>): string {
-            let dataString: string = "";
-            promise.then((data) => { dataString = data; });
-            return dataString;
-        }
-    
-        getIngredientFromPromise(promise: Promise<Ingredient>): Ingredient {
-            let dataString: Ingredient = new Ingredient();
-            promise.then((data) => { dataString = data; });
-            return dataString;
-        } */
 
-    /* I N G R E D I E N T S */
-    // Get one ingredient specified by the ID received 
+
+    /**
+     * I N G R E D I E N T S 
+     */
+
+    /* Get current state of one ingredient by given ID */
     async getIngredientById(ingredientId: Id): Promise<Ingredient> {
         const url = `${this.ingredientsUrl}/${ingredientId}`;
         const ingredient: Ingredient = await this.http.get<Ingredient>(url).toPromise();
         return ingredient;
     }
 
-    // Consume ingredients from the machine
+    /* Consume given amount of given ingredient from the machine */
     useIngredient(ingredient: Ingredient, usedAmount: number): void {
         let ingUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
         let amountJson = {
@@ -128,7 +110,7 @@ export class IngredientsService {
             .subscribe();
     }
 
-    // Add a given amount of one ingredient back into the machine
+    /* Add given amount of given ingredient back into the machine */
     refillIngredient(ingredient: Ingredient, refillAmount: number): void {
         let ingUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
         let amountJson = {
@@ -138,13 +120,14 @@ export class IngredientsService {
             .subscribe();
     }
 
+    /* Get list of all ingredients */
     getIngredients(): Observable<Ingredient[]> {
         return this.http.get<Ingredient[]>(this.ingredientsUrl);
     }
 
-    updateIngredientsList(): void {
-        this.getIngredients().subscribe(res => {
-            this.ingredientsList = res;
-        });
-    }
+    /*     updateIngredientsList(): void {
+            this.getIngredients().subscribe(res => {
+                this.ingredientsList = res;
+            });
+        } */
 }
