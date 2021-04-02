@@ -26,14 +26,13 @@
         value="Refill {{ ingredient.name }}" 
         class="btn button2"> -->
     <!-- <button type="submit" class="button button1">Make an {{ recipe.name }}</button> -->
-    <!-- </p> -->
 
     <br>
-    <form class="form" (ngSubmit)="onBrewSubmit()">
+    <form class="indented" (ngSubmit)="onBrewSubmit()">
+        <input type="submit" value="Brew {{ recipe.name }}" class="btn btn-success">
         <!-- <input type="number" 
             name="refillAmount" 
             [(ngModel)]="refillAmount" 
             placeholder="Amount..."> -->
-        <input type="submit" value="Brew {{ recipe.name }}" class="btn btn-success">
     </form>
 </div>

@@ -37,8 +37,7 @@
     margin-right: 3%;
 }
 
-h2.whiteTextOverride
-{
+h2.whiteTextOverride {
  color: ivory !important;
 }
 
@@ -98,7 +97,8 @@ body {
 /* - */
 
 /* https://www.w3schools.com/css/css_outline.asp */
-p {outline-color:#c06525;
+p {
+    outline-color:#c06525;
     /* display: inline-block; */
     padding: 15px 32px;
     border-left: 15px 32px;
