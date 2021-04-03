@@ -13,12 +13,20 @@
             <span class="input-group-text" id="unit-{{ ingredient.name }}" width="10px">
                 {{ ingredient.unit }}</span>
 
-            <button type="submit" class="btn btn-primary" id="button-{{ ingredient.name }}">
+            <button type="submit" class="btn btn-primary" id="button-{{ ingredient.name }}" [disabled]="!refillAmount.viewModel
+                || 0 > (refillAmountValue + ingredient.amount)
+                || (refillAmountValue + ingredient.amount) > 1500">
                 Refill {{ingredient.name}}</button>
-            <div class="alert alert-danger" *ngIf="refillAmount.touched && !refillAmount.viewModel">An amount is
-                required</div>
+
+            <div class="alert alert-warning" id="alert-empty-{{ ingredient.name }}"
+                *ngIf="refillAmount.touched && !refillAmount.viewModel">
+                An amount is required 🤲</div>
+            <div class="alert alert-danger" id="alert-negative-{{ ingredient.name }}"
+                *ngIf="0 > (refillAmountValue + ingredient.amount)">
+                An amount may not become negative ⬆️</div>
+            <div class="alert alert-danger" id="alert-toohigh-{{ ingredient.name }}"
+                *ngIf="(refillAmountValue + ingredient.amount) > 1500">
+                The machine can only hold 1.500{{ingredient.unit}} 🚧</div>
         </div>
-        <!-- <input type="number" name="refillAmount" [(ngModel)]="refillAmount" placeholder="Amount..."> -->
-        <!-- <input type="submit" value="Refill {{ ingredient.name }}" class="btn button2"> -->
     </form>
 </div>
