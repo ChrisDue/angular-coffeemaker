@@ -4,25 +4,25 @@
       "id": 1,
       "name": "Coffee",
       "unit": "g",
-      "amount": 0
+      "amount": 10
     },
     {
       "id": 2,
       "name": "Water",
       "unit": "ml",
-      "amount": 0
+      "amount": 10
     },
     {
       "id": 3,
       "name": "Milk",
       "unit": "ml",
-      "amount": 0
+      "amount": 10
     },
     {
       "id": 4,
       "name": "Cocoa",
       "unit": "g",
-      "amount": 0
+      "amount": 10
     }
   ],
   "recipes": [
@@ -61,6 +61,15 @@
       "cocoaAmount": 10,
       "isFavorite": false,
       "id": 4
+    },
+    {
+      "name": "Speciale",
+      "coffeeAmount": 2,
+      "waterAmount": 1,
+      "milkAmount": 3,
+      "cocoaAmount": 4,
+      "isFavorite": false,
+      "id": 5
     }
   ]
 }
