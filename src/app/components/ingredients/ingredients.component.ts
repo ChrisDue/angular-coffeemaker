@@ -3,25 +3,26 @@ import { IngredientsService } from './../../services/ingredients.service';
 import { Ingredient } from 'src/app/models/Ingredient';
 
 @Component({
-  selector: 'app-ingredients',
-  templateUrl: './ingredients.component.html',
-  styleUrls: ['../../app.component.css']
+    selector: 'app-ingredients',
+    templateUrl: './ingredients.component.html',
+    styleUrls: ['../../app.component.css']
 })
+
 export class IngredientsComponent implements OnInit {
-  ingredients!: Ingredient[];
+    ingredients!: Ingredient[];
 
-  constructor(private ingredientsService: IngredientsService) {
-  }
+    constructor(private ingredientsService: IngredientsService) {
+    }
 
-  ngOnInit(): void {
-    // Get ingredients list from server / db
-    this.ingredientsService.getIngredients().subscribe(ingredients => {
-      this.ingredients = ingredients;
-    });
-  }
+    ngOnInit(): void {
+        // Get ingredients list from server / db
+        this.ingredientsService.getIngredients().subscribe(ingredients => {
+            this.ingredients = ingredients;
+        });
+    }
 
-  onGet() {
-    console.log('get all ingredients');
-    this.ingredientsService.getIngredients().subscribe(x => console.log(x))
-  }
-}               
+    onGet() {
+        console.log('get all ingredients');
+        this.ingredientsService.getIngredients().subscribe(x => console.log(x))
+    }
+}
