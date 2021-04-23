@@ -1,4 +1,4 @@
-<form class="container jumbotron-add-recipe" (ngSubmit)="onAddSubmit()">
+<form class="container jumbotron-add-recipe" (ngSubmit)="onAddSubmit()" id="form-new-recipe">
 
     <h2 class="whiteTextOverride">Your newest creation</h2>
 
@@ -7,10 +7,10 @@
             [(ngModel)]="nameValue" ngModel name="name" #name="ngModel" (change)="log(name)">
         <label for="name">Recipe Name</label>
         <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
-            <div *ngIf="name.errors?.required">
+            <div *ngIf="name.errors?.required" id="error-name-empty">
                 Recipes require a name.</div>
-            <div *ngIf="name.errors?.minlength">
-                Recipe names need {{ name.errors?.minlength.requiredLength }} to 12 characters.</div>
+            <div *ngIf="name.errors?.minlength" id="error-name-length">
+                Recipe names need {{ name.errors?.minlength.requiredLength }} to 20 characters.</div>
         </div>
     </div>
     <div class="form-floating indented">
@@ -39,7 +39,7 @@
         <label for="cocoaAmount">Amount of Cocoa in g</label>
     </div>
     <br>
-    <div class="alert alert-warning" *ngIf="!name.valid 
+    <div class="alert alert-warning" id="requirements-warning" *ngIf="!name.valid 
         || !coffeeAmount.viewModel 
         && !waterAmount.viewModel 
         && !milkAmount.viewModel 

@@ -93,7 +93,7 @@ Cypress.Commands.add('resetIngredientsTable', () => {
     cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/4', default_cocoa);
 });
 
-Cypress.Commands.add('resetRecipeTable', () => {
+Cypress.Commands.add('resetRecipesTable', () => {
     cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/1', default_americano);
     cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/2', default_espresso);
     cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/3', default_latteMacchiato);
