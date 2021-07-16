@@ -18,7 +18,7 @@ Related Github: https://github.com/bradtraversy/angular-crash-todolist
 
 ### 1.2 Launch and view
 
-> ng server --open  
+> ng serve --open  
 
 Opens your Default Browser on http://localhost:4200/, where the Coffeemaker is running.  
 
