@@ -5,12 +5,13 @@ context('Header', () => {
     cy.visit('http://localhost:4200')
   })
 
-  // copy of "actions"
-
-  it('shows correct texts and uses correct links', () => {
+  it('shows correct headline', () => {
     // Check header title
     cy.get('.header').find('h1')
       .should('have.text', 'I\'m Your Smart Coffeemaker')
+  })
+
+  it('forwards correctly', () => {
     // Check links by text and forwarding by url 
     cy.get('a').contains('Recipes').click()
     cy.url().should('include', '/recipes')
@@ -20,18 +21,14 @@ context('Header', () => {
     cy.url().should('include', '/about')
   })
 
-  it.only('looks the same on every page', () => {
-    cy.get('.header')
-      .toMatchImageSnapshot();
+  it('looks the same on every page', () => {
+    cy.visit('http://localhost:4200/recipes')
+    cy.get('.header').toMatchImageSnapshot();
 
+    cy.visit('http://localhost:4200/ingredients')
+    cy.get('.header').toMatchImageSnapshot();
 
-    // cy.visit('recipes')
-
-
-    // cy.visit('ingredients')
-
-
-    // cy.visit('about')
-
+    cy.visit('http://localhost:4200/about')
+    cy.get('.header').toMatchImageSnapshot();
   })
 })
