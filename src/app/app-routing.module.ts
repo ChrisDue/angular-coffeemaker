@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TodosComponent } from './components/todos/todos.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { IngredientsComponent } from './components/ingredients/ingredients.component';
 import { AboutComponent } from './components/pages/about/about.component';
