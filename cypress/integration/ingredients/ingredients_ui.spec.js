@@ -73,7 +73,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#ingredient-Cocoa').should('be.visible');
   })
 
-  it.only('Bottommost ingredient not scrolled out of view after interaction', () => {
+  it('Bottommost ingredient not scrolled out of view after interaction', () => {
     cy.get('#amount-Cocoa').scrollIntoView();
     //cy.wait(500);
     cy.get('#amount-Cocoa')
