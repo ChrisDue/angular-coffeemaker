@@ -16,7 +16,7 @@ context('Ingredients - UI Tests', () => {
   })
 
   it('All ingredients show their correct unit', () => {
-    cy.get('#coffeeAmount > label').should('contain','in g');
+    cy.get('#coffeeAmount > label').should('contain', 'in g');
   })
 
   /* User interactions */
@@ -80,9 +80,14 @@ context('Ingredients - UI Tests', () => {
     cy.get('#name').type('Test Recipe');
     cy.get('#waterAmount').type(1);
     cy.get('#submit-new-recipe').should('be.enabled').click();
-    // cy.get('#recipe-Test Recipe').find('label').should('contain.text', 'Water: 11ml');
-    cy.get('#recipe-Test Recipe').should('contain.text', 'Needed Water: 1ml');
+    // Von Cypress:#recipe-Test\ Recipe > table.indented > :nth-child(2) > [align="right"]
+    // Von Chrome: #recipe-Test\ Recipe > table > tr:nth-child(2) > td:nth-child(2)
+    cy.get('#recipe-Test\\ Recipe > table > tr:nth-child(2) > td:nth-child(2)')
+      .should('contain', '1');
   })
+
+  /* Recipes can be brewn */
+  // TODO
 
   /* Alerts behave correctly */
   it('No alerts displayed before interaction', () => {
