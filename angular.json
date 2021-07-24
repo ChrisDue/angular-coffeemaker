@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-crash-todolist": {
+    "angular-coffeemaker": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-crash-todolist",
+            "outputPath": "dist/angular-coffeemaker",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-crash-todolist:build"
+            "browserTarget": "angular-coffeemaker:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-crash-todolist:build:production"
+              "browserTarget": "angular-coffeemaker:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-crash-todolist:build"
+            "browserTarget": "angular-coffeemaker:build"
           }
         },
         "test": {
@@ -119,16 +119,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-crash-todolist:serve"
+            "devServerTarget": "angular-coffeemaker:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-crash-todolist:serve:production"
+              "devServerTarget": "angular-coffeemaker:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-crash-todolist"
+  "defaultProject": "angular-coffeemaker"
 }
