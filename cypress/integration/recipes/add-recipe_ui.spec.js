@@ -15,8 +15,8 @@ context('Ingredients - UI Tests', () => {
     cy.get('#submit-new-recipe').should('be.disabled');
   })
 
-  it.skip('All ingredients show their correct unit', () => {
-    // ! cy.get('#coffeeAmount').contains('in g');
+  it('All ingredients show their correct unit', () => {
+    cy.get('#coffeeAmount > label').should('contain','in g');
   })
 
   /* User interactions */
@@ -47,28 +47,28 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* Input sanitization */
-  it.only('Error shown if name less than 2 chars', () => {
+  it('Error shown if name less than 2 chars', () => {
     cy.get('#name').type('A');
     // click somewhere else to trigger error visibility
     cy.get('#form-new-recipe').click();
     cy.get('#error-name-length').should('be.visible');
   })
 
-  it.only('Error shown if name clicked but left empty', () => {
+  it('Error shown if name clicked but left empty', () => {
     cy.get('#name').click();
     // click somewhere else to trigger error visibility
     cy.get('#form-new-recipe').click();
     cy.get('#error-name-empty').should('be.visible');
   })
 
-  it.only('Recipe name is cut at 20 chars', () => {
+  it('Recipe name is cut at 20 chars', () => {
     cy.get('#name')
       .type('Best Coffee for Testers')
       .get('[ng-reflect-model]')
       .should('have.value', 'Best Coffee for Test');
   })
 
-  it.only('Ingredient amounts are capped at 1500', () => {
+  it('Ingredient amounts are capped at 1500', () => {
     cy.get('#coffeeAmount')
       .type('1501')
       .get('[ng-reflect-model]')
@@ -76,42 +76,44 @@ context('Ingredients - UI Tests', () => {
   })
 
   // TODO from here on down -->
-  it.skip('Ingredient amounts are saved correctly in newly created recipe', () => {
-    cy.get('#amount-Water').type(1);
-    cy.get('#button-Water').should('be.enabled').click();
-    cy.get('#form-Water').find('label').contains('Water: 11ml');
+  it.only('Ingredient amounts are saved correctly in newly created recipe', () => {
+    cy.get('#name').type('Test Recipe');
+    cy.get('#waterAmount').type(1);
+    cy.get('#submit-new-recipe').should('be.enabled').click();
+    // cy.get('#recipe-Test Recipe').find('label').should('contain.text', 'Water: 11ml');
+    cy.get('#recipe-Test Recipe').should('contain.text', 'Needed Water: 1ml');
   })
 
   /* Alerts behave correctly */
-  it.skip('No alerts displayed before interaction', () => {
+  it('No alerts displayed before interaction', () => {
     cy.get('.alert').should('not.exist');
   })
 
-  it.skip('Empty amount triggers alert', () => {
+  it('Empty amount triggers alert', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#ingredient-Coffee').find('label').click();
     cy.get('.alert').should('be.visible');
   })
 
-  it.skip('Empty amount alert text correct', () => {
+  it('Empty amount alert text correct', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#ingredient-Coffee').find('label').click();
     cy.get('.alert').should('be.visible');
   })
 
-  it.skip('Empty amount alert disappears after inserting one', () => {
+  it('Empty amount alert disappears after inserting one', () => {
     cy.get('#amount-Milk').type(1);
     cy.get('#button-Milk').should('be.enabled').click();
     cy.get('.alert').should('not.exist');
   })
 
   /* Page length doesn't cause issues */
-  it.skip('Bottommost ingredient can be reached', () => {
+  it('Bottommost ingredient can be reached', () => {
     cy.scrollTo('bottom');
     cy.get('#ingredient-Cocoa').should('be.visible');
   })
 
-  it.skip('Bottommost ingredient not scrolled out of view after interaction', () => {
+  it('Bottommost ingredient not scrolled out of view after interaction', () => {
     cy.get('#amount-Cocoa').scrollIntoView();
     cy.wait(500);
     cy.get('#amount-Cocoa').should('be.visible')
@@ -119,6 +121,6 @@ context('Ingredients - UI Tests', () => {
     cy.get('#button-Cocoa').should('be.enabled')
       .click();
     cy.get('#ingredient-Cocoa').should('be.visible');
-    cy.get('#form-Cocoa').find('label').contains('Cocoa: 11g');
+    cy.get('#form-Cocoa').find('label').should('contain.text', 'Cocoa: 11g');
   })
 })
