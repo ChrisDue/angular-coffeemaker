@@ -94,11 +94,15 @@ Cypress.Commands.add('resetIngredientsTable', () => {
 });
 
 Cypress.Commands.add('resetRecipesTable', () => {
-  cy.request({
-    method: 'DELETE',
-    failOnStatusCode: false,
-    url: Cypress.env('dbUrl_Recipes') + '/5' // delete newly added recipe
-  });
+  let i = 5;
+  while(i<7) {
+    cy.request({
+      method: 'DELETE',
+      failOnStatusCode: false,
+      url: Cypress.env('dbUrl_Recipes') + '/' + i // delete newly added recipes
+    });
+    i++;
+  };
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/1', default_americano);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/2', default_espresso);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/3', default_latteMacchiato);
