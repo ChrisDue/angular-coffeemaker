@@ -7,8 +7,8 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* General display tests */
-  it('Requirements warning shown by default', () => {
-    cy.get('#requirements-warning').should('be.visible');
+  it.only('Requirements warning shown by default', () => {
+    cy.get('#requirements-warning');
   })
 
   it('Submit Button disabled by default', () => {
@@ -75,19 +75,57 @@ context('Ingredients - UI Tests', () => {
       .should('have.value', '1500');
   })
 
-  // TODO from here on down -->
-  it.only('Ingredient amounts are saved correctly in newly created recipe', () => {
+  it('Ingredient amounts are saved correctly in newly created recipe', () => {
     cy.get('#name').type('Test Recipe');
     cy.get('#waterAmount').type(1);
     cy.get('#submit-new-recipe').should('be.enabled').click();
     // Von Cypress:#recipe-Test\ Recipe > table.indented > :nth-child(2) > [align="right"]
     // Von Chrome: #recipe-Test\ Recipe > table > tr:nth-child(2) > td:nth-child(2)
     cy.get('#recipe-Test\\ Recipe > table > tr:nth-child(2) > td:nth-child(2)')
-      .should('contain', '1');
+    .should('contain', '1');
+  })
+  
+  /* Recipes can be brewn */
+  // TODO from here on down -->
+  it('Original recipes can be brewn', () => {
+    cy.resetIngredientsTable();
+
+    cy.get('#recipe-Americano')
+      .contains('Brew Americano')
+      .click();
+
+    cy.on('window:alert', (text) => {
+      expect(text).to
+        .contain('☕ Enjoy your freshly brewed Americano! ☕');
+    });
+
+    cy.resetIngredientsTable();
   })
 
-  /* Recipes can be brewn */
-  // TODO
+  it('Newly created recipes can be brewn', () => {
+    cy.resetIngredientsTable();
+
+    cy.get('#name').type('Ristretto')
+      .get('#waterAmount').type(5)
+      .get('#coffeeAmount').type(10)
+      .get('#submit-new-recipe').should('be.enabled').click();
+
+    cy.get('#recipe-Ristretto')
+      .contains('Brew Ristretto')
+      .click();
+
+    // ! Failt nicht
+    cy.on('window:alert', (text) => {
+      expect(text).to
+        .contain('☕ Enjoy your freshly brewed Ristretto! ☕');
+    });
+
+    cy.resetIngredientsTable();
+  })
+
+  it('Reset', () => {
+    cy.resetIngredientsTable();
+  })
 
   /* Alerts behave correctly */
   it('No alerts displayed before interaction', () => {
