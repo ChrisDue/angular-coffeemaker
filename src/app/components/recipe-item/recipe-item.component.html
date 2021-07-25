@@ -1,5 +1,6 @@
 <div class="jumbotron-recipe" id="recipe-{{recipe.name}}">
     <h2>{{ recipe.name }}:</h2>
+
     <table class="indented">
         <tr>
             <td>Needed Coffee:</td>
@@ -24,7 +25,7 @@
     </table>
 
     <br>
-    <form class="indented" (ngSubmit)="onBrewSubmit()">
+    <form class="indented" id="brewButton" (ngSubmit)="onBrewSubmit()">
         <input type="submit" value="Brew {{ recipe.name }}" class="btn btn-success">
     </form>
 </div>
