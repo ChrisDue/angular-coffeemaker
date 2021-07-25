@@ -7,11 +7,11 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* General tests */
-  it('All ingredients show their current amount', () => {
-    cy.get('#form-Coffee').find('label').contains('Coffee: 10');
-    cy.get('#form-Water').find('label').contains('Water: 10');
-    cy.get('#form-Milk').find('label').contains('Milk: 10');
-    cy.get('#form-Cocoa').find('label').contains('Cocoa: 10');
+  it.only('All ingredients show their current amount', () => {
+    cy.get('#form-Coffee').find('label').contains('Coffee: 10g');
+    cy.get('#form-Water').find('label').should('contain.text', 'Water: 10');
+    cy.get('#form-Milk').get('label').should('contain.text', 'Milk: 10');
+    cy.get('#form-Cocoa').should('contain.text', 'Cocoa: 10');
   })
 
   it('All ingredients show their correct unit', () => {
