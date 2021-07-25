@@ -7,18 +7,18 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* General tests */
-  it.only('All ingredients show their current amount', () => {
-    cy.get('#form-Coffee').find('label').contains('Coffee: 10g');
+  it('All ingredients show their current amount', () => {
+    cy.get('#form-Coffee').find('label').should('contain.text', 'Coffee: 10');
     cy.get('#form-Water').find('label').should('contain.text', 'Water: 10');
-    cy.get('#form-Milk').get('label').should('contain.text', 'Milk: 10');
-    cy.get('#form-Cocoa').should('contain.text', 'Cocoa: 10');
+    cy.get('#form-Milk').find('label').should('contain.text', 'Milk: 10');
+    cy.get('#form-Cocoa').find('label').should('contain.text', 'Cocoa: 10');
   })
 
   it('All ingredients show their correct unit', () => {
-    cy.get('#form-Coffee').find('label').contains('g');
-    cy.get('#form-Water').find('label').contains('ml');
-    cy.get('#form-Milk').find('label').contains('ml');
-    cy.get('#form-Cocoa').find('label').contains('g');
+    cy.get('#form-Coffee').find('label').should('contain.text', 'g');
+    cy.get('#form-Water').find('label').should('contain.text', 'ml');
+    cy.get('#form-Milk').find('label').should('contain.text', 'ml');
+    cy.get('#form-Cocoa').find('label').should('contain.text', 'g');
   })
 
   /* User interactions take effect */
@@ -29,6 +29,10 @@ context('Ingredients - UI Tests', () => {
   })
 
   it('Submit button disabled before interaction', () => {
+    cy.get('#button-Coffee').should('be.disabled');
+  })
+
+it('Submit button disabled after interaction', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#button-Coffee').should('be.disabled');
   })

@@ -7,11 +7,17 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* General display tests */
-  it.only('Requirements warning shown by default', () => {
-    cy.get('#requirements-warning');
+  it('Recipe creation form is visible', () => {
+    cy.get('#form-new-recipe').should('be.visible');
   })
 
-  it('Submit Button disabled by default', () => {
+  it('Requirements warning shown by default, including correct info', () => {
+    cy.get('#requirements-warning')
+      .should('be.visible')
+      .and('contain.text', 'Recipes need a Name and at least one Ingredient.');
+  })
+
+  it('Submit button disabled before any interaction', () => {
     cy.get('#submit-new-recipe').should('be.disabled');
   })
 
@@ -24,7 +30,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#name').type('Short Coffee Name');
   })
 
-  it('All ingredient amounts can be typed', () => {
+  it('All ingredient amount fields can be typed in', () => {
     cy.get('#coffeeAmount').type('1');
     cy.get('#waterAmount').type('2');
     cy.get('#milkAmount').type('3');
@@ -47,7 +53,7 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* Input sanitization */
-  it('Error shown if name less than 2 chars', () => {
+  it('Error shown if name is shorter than 2 chars', () => {
     cy.get('#name').type('A');
     // click somewhere else to trigger error visibility
     cy.get('#form-new-recipe').click();
@@ -61,20 +67,20 @@ context('Ingredients - UI Tests', () => {
     cy.get('#error-name-empty').should('be.visible');
   })
 
-  it('Recipe name is cut at 20 chars', () => {
+  it.only('Recipe name is cut at 20 chars', () => {
     cy.get('#name')
-      .type('Best Coffee for Testers')
-      .get('[ng-reflect-model]')
-      .should('have.value', 'Best Coffee for Test');
+      .find('input')
+      .type('Best Coffee for TestERS')
+      .should('have.value', 'Best Coffee for Test')
+      .and('not.have.value', 'ERS');
   })
 
-  it('Ingredient amounts are capped at 1500', () => {
-    cy.get('#coffeeAmount')
-      .type('1501')
-      .get('[ng-reflect-model]')
-      .should('have.value', '1500');
+  it.only('Ingredient amounts are max 1.500 and never negative', () => {
+    cy.get('#coffeeAmount > input').type('1501').should('have.value', '1500');
+    cy.get('#milkAmount   > input').type('-1')  .should('have.value', '1');
   })
 
+  // TODO Text-Stand hier 
   it('Ingredient amounts are saved correctly in newly created recipe', () => {
     cy.get('#name').type('Test Recipe');
     cy.get('#waterAmount').type(1);
@@ -82,9 +88,9 @@ context('Ingredients - UI Tests', () => {
     // Von Cypress:#recipe-Test\ Recipe > table.indented > :nth-child(2) > [align="right"]
     // Von Chrome: #recipe-Test\ Recipe > table > tr:nth-child(2) > td:nth-child(2)
     cy.get('#recipe-Test\\ Recipe > table > tr:nth-child(2) > td:nth-child(2)')
-    .should('contain', '1');
+      .should('contain', '1');
   })
-  
+
   /* Recipes can be brewn */
   // TODO from here on down -->
   it('Original recipes can be brewn', () => {
@@ -94,6 +100,7 @@ context('Ingredients - UI Tests', () => {
       .contains('Brew Americano')
       .click();
 
+    // https://applitools.com/blog/testing-browser-alerts-confirmations-prompts-cypress/
     cy.on('window:alert', (text) => {
       expect(text).to
         .contain('☕ Enjoy your freshly brewed Americano! ☕');
@@ -128,42 +135,32 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* Alerts behave correctly */
-  it('No alerts displayed before interaction', () => {
+  it.skip('No alerts displayed before interaction', () => {
     cy.get('.alert').should('not.exist');
   })
 
-  it('Empty amount triggers alert', () => {
+  it.skip('Empty amount triggers alert', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#ingredient-Coffee').find('label').click();
     cy.get('.alert').should('be.visible');
   })
 
-  it('Empty amount alert text correct', () => {
+  it.skip('Empty amount alert text correct', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#ingredient-Coffee').find('label').click();
     cy.get('.alert').should('be.visible');
   })
 
-  it('Empty amount alert disappears after inserting one', () => {
+  it.skip('Empty amount alert disappears after inserting one', () => {
     cy.get('#amount-Milk').type(1);
     cy.get('#button-Milk').should('be.enabled').click();
     cy.get('.alert').should('not.exist');
   })
 
   /* Page length doesn't cause issues */
-  it('Bottommost ingredient can be reached', () => {
+  it.only('Bottommost brew button can be reached', () => {
     cy.scrollTo('bottom');
-    cy.get('#ingredient-Cocoa').should('be.visible');
-  })
-
-  it('Bottommost ingredient not scrolled out of view after interaction', () => {
-    cy.get('#amount-Cocoa').scrollIntoView();
-    cy.wait(500);
-    cy.get('#amount-Cocoa').should('be.visible')
-      .type(1);
-    cy.get('#button-Cocoa').should('be.enabled')
-      .click();
-    cy.get('#ingredient-Cocoa').should('be.visible');
-    cy.get('#form-Cocoa').find('label').should('contain.text', 'Cocoa: 11g');
+    cy.get('#recipe-Hot\\ Chocolate > #brewButton')
+      .should('be.visible');
   })
 })
