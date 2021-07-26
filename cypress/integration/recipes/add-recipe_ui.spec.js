@@ -43,7 +43,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#submit-new-recipe').should('be.enabled');
   })
 
-  it('Submit Button disabled when ingredient amounts are 0', () => {
+  it.only('Submit Button disabled when ingredient amounts are 0', () => {
     cy.get('#name').type('Disabled Empty Coffee');
     cy.get('#coffeeAmount').type('0');
     cy.get('#waterAmount').type('0');
@@ -81,6 +81,12 @@ context('Ingredients - UI Tests', () => {
   })
 
   // TODO Text-Stand hier 
+  it('Submit button clickable after name and 1 ingredient given', () => {
+    cy.get('#name').type('Test Recipe');
+    cy.get('#waterAmount').type(8);
+    cy.get('#submit-new-recipe').should('be.enabled').click();
+  })
+
   it('Ingredient amounts are saved correctly in newly created recipe', () => {
     cy.get('#name').type('Test Recipe');
     cy.get('#waterAmount').type(1);
