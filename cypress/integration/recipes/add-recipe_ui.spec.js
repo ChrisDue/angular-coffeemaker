@@ -43,7 +43,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#submit-new-recipe').should('be.enabled');
   })
 
-  it.only('Submit Button disabled when ingredient amounts are 0', () => {
+  it('Submit button disabled when ingredient amounts are 0', () => {
     cy.get('#name').type('Disabled Empty Coffee');
     cy.get('#coffeeAmount').type('0');
     cy.get('#waterAmount').type('0');
@@ -67,7 +67,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#error-name-empty').should('be.visible');
   })
 
-  it.only('Recipe name is cut at 20 chars', () => {
+  it('Recipe name is cut at 20 chars', () => {
     cy.get('#name')
       .find('input')
       .type('Best Coffee for TestERS')
@@ -75,26 +75,34 @@ context('Ingredients - UI Tests', () => {
       .and('not.have.value', 'ERS');
   })
 
-  it.only('Ingredient amounts are max 1.500 and never negative', () => {
+  it('Ingredient amounts are max 1.500 and never negative', () => {
     cy.get('#coffeeAmount > input').type('1501').should('have.value', '1500');
     cy.get('#milkAmount   > input').type('-1')  .should('have.value', '1');
   })
 
-  // TODO Text-Stand hier 
   it('Submit button clickable after name and 1 ingredient given', () => {
     cy.get('#name').type('Test Recipe');
     cy.get('#waterAmount').type(8);
     cy.get('#submit-new-recipe').should('be.enabled').click();
   })
 
-  it('Ingredient amounts are saved correctly in newly created recipe', () => {
-    cy.get('#name').type('Test Recipe');
-    cy.get('#waterAmount').type(1);
-    cy.get('#submit-new-recipe').should('be.enabled').click();
-    // Von Cypress:#recipe-Test\ Recipe > table.indented > :nth-child(2) > [align="right"]
-    // Von Chrome: #recipe-Test\ Recipe > table > tr:nth-child(2) > td:nth-child(2)
-    cy.get('#recipe-Test\\ Recipe > table > tr:nth-child(2) > td:nth-child(2)')
-      .should('contain', '1');
+  // TODO Text-Stand hier 
+  it.only('Values saved correctly in newly created recipe', () => {
+    cy.get('#name').type('Lungo')
+      .get('#coffeeAmount').type(8)
+      .get('#waterAmount').type(10)
+      .get('#submit-new-recipe').should('be.enabled').click();
+
+    cy.get('#recipe-Lungo > h2')
+      .should('contain.text', 'Lungo:');
+    cy.get('#recipe-Lungo > table > tr:nth-child(1) > td:nth-child(2)')
+      .should('contain', '8');
+    cy.get('#recipe-Lungo > table > tr:nth-child(2) > td:nth-child(2)')
+      .should('contain', '10');
+    cy.get('#recipe-Lungo > table > tr:nth-child(3) > td:nth-child(2)')
+      .should('contain', '0');
+    cy.get('#recipe-Lungo > table > tr:nth-child(4) > td:nth-child(2)')
+      .should('contain', '0');
   })
 
   /* Recipes can be brewn */
@@ -164,7 +172,7 @@ context('Ingredients - UI Tests', () => {
   })
 
   /* Page length doesn't cause issues */
-  it.only('Bottommost brew button can be reached', () => {
+  it('Bottommost brew button can be reached', () => {
     cy.scrollTo('bottom');
     cy.get('#recipe-Hot\\ Chocolate > #brewButton')
       .should('be.visible');
