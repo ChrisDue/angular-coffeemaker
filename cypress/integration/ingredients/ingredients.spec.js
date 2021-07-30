@@ -32,7 +32,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#button-Coffee').should('be.disabled');
   })
 
-it('Submit button disabled after interaction', () => {
+  it('Submit button disabled after interaction', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#button-Coffee').should('be.disabled');
   })
@@ -80,12 +80,13 @@ it('Submit button disabled after interaction', () => {
   it('Bottommost ingredient not scrolled out of view after interaction', () => {
     cy.get('#amount-Cocoa').scrollIntoView();
     //cy.wait(500);
-    cy.get('#amount-Cocoa')
-      .should('be.visible')
+    cy.get('#amount-Cocoa').should('be.visible')
       .type(1);
     cy.get('#button-Cocoa').should('be.enabled')
       .click();
     cy.get('#ingredient-Cocoa').should('be.visible');
-    cy.get('#form-Cocoa').find('label').contains('Cocoa: 11g');
+    cy.get('#form-Cocoa').find('label')
+      .should('contain.text', 'Cocoa: 11g')
+      .and('be.visible');
   })
 })
