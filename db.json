@@ -61,15 +61,6 @@
       "cocoaAmount": 10,
       "isFavorite": false,
       "id": 4
-    },
-    {
-      "name": "Speciale",
-      "coffeeAmount": 2,
-      "waterAmount": 1,
-      "milkAmount": 3,
-      "cocoaAmount": 4,
-      "isFavorite": false,
-      "id": 5
     }
   ]
 }
