@@ -7,8 +7,64 @@ context('Ingredients - UI Tests', () => {
     cy.visit(Cypress.env('appUrl_Recipes'));
   })
 
-  /* Recipes can be brewn */
-  it('Original recipes can be brewn', () => {
+  after(() => {
+    cy.resetRecipesTable();
+    cy.resetIngredientsTable();
+  })
+
+  /* Brewing recipes */
+  it('Brewing original recipe uses ingredients correctly', () => {
+    cy.get('#recipe-Americano > #brewButton')
+      .click();
+
+    cy.wait(500)
+      .visit(Cypress.env('appUrl_Ingredients'));
+
+    cy.get('#form-Coffee > .form-label')
+      .should('contain.text', 'Coffee: 5g');
+    cy.get('#form-Water > .form-label')
+      .should('contain.text', 'Water: 0ml');
+    cy.get('#form-Milk > .form-label')
+      .should('contain.text', 'Milk: 10ml');
+    cy.get('#form-Cocoa > .form-label')
+      .should('contain.text', 'Cocoa: 10g');
+  })
+
+  it('Brewing second recipe is blocked by insufficient ingredients', () => {
+    cy.get('#recipe-Americano > #brewButton')
+      .click();
+
+    cy.wait(500)
+      .visit(Cypress.env('appUrl_Ingredients'));
+
+    cy.get('#form-Coffee > .form-label')
+      .should('contain.text', 'Coffee: 5g');
+    cy.get('#form-Water > .form-label')
+      .should('contain.text', 'Water: 0ml');
+    cy.get('#form-Milk > .form-label')
+      .should('contain.text', 'Milk: 10ml');
+    cy.get('#form-Cocoa > .form-label')
+      .should('contain.text', 'Cocoa: 10g');
+
+    cy.visit(Cypress.env('appUrl_Recipes'));
+
+    cy.get('#recipe-Latte\\ Macchiato > #brewButton')
+      .click();
+
+    cy.wait(500)
+      .visit(Cypress.env('appUrl_Ingredients'));
+
+    cy.get('#form-Coffee > .form-label')
+      .should('contain.text', 'Coffee: 5g');
+    cy.get('#form-Water > .form-label')
+      .should('contain.text', 'Water: 0ml');
+    cy.get('#form-Milk > .form-label')
+      .should('contain.text', 'Milk: 10ml');
+    cy.get('#form-Cocoa > .form-label')
+      .should('contain.text', 'Cocoa: 10g');
+  })
+
+  it('Original recipe can be brewn and triggers alert', () => {
     cy.get('#recipe-Americano')
       .contains('Brew Americano')
       .click();
@@ -20,7 +76,7 @@ context('Ingredients - UI Tests', () => {
     });
   })
 
-  it('Newly created recipes can be brewn', () => {
+  it('Newly created recipe can be brewn and triggers alert', () => {
     cy.get('#name').type('Ristretto')
       .get('#waterAmount').type(5)
       .get('#coffeeAmount').type(10)
