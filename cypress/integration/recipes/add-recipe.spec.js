@@ -77,7 +77,7 @@ context('Ingredients - UI Tests', () => {
 
   it('Ingredient amounts are max 1.500 and never negative', () => {
     cy.get('#coffeeAmount > input').type('1501').should('have.value', '1500');
-    cy.get('#milkAmount   > input').type('-1')  .should('have.value', '1');
+    cy.get('#milkAmount   > input').type('-1').should('have.value', '1');
   })
 
   it('Submit button clickable after name and 1 ingredient given', () => {
@@ -86,8 +86,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#submit-new-recipe').should('be.enabled').click();
   })
 
-  // TODO Text-Stand hier 
-  it.only('Values saved correctly in newly created recipe', () => {
+  it('Values saved correctly in newly created recipe', () => {
     cy.get('#name').type('Lungo')
       .get('#coffeeAmount').type(8)
       .get('#waterAmount').type(10)
@@ -103,49 +102,6 @@ context('Ingredients - UI Tests', () => {
       .should('contain', '0');
     cy.get('#recipe-Lungo > table > tr:nth-child(4) > td:nth-child(2)')
       .should('contain', '0');
-  })
-
-  /* Recipes can be brewn */
-  // TODO from here on down -->
-  it('Original recipes can be brewn', () => {
-    cy.resetIngredientsTable();
-
-    cy.get('#recipe-Americano')
-      .contains('Brew Americano')
-      .click();
-
-    // https://applitools.com/blog/testing-browser-alerts-confirmations-prompts-cypress/
-    cy.on('window:alert', (text) => {
-      expect(text).to
-        .contain('☕ Enjoy your freshly brewed Americano! ☕');
-    });
-
-    cy.resetIngredientsTable();
-  })
-
-  it('Newly created recipes can be brewn', () => {
-    cy.resetIngredientsTable();
-
-    cy.get('#name').type('Ristretto')
-      .get('#waterAmount').type(5)
-      .get('#coffeeAmount').type(10)
-      .get('#submit-new-recipe').should('be.enabled').click();
-
-    cy.get('#recipe-Ristretto')
-      .contains('Brew Ristretto')
-      .click();
-
-    // ! Failt nicht
-    cy.on('window:alert', (text) => {
-      expect(text).to
-        .contain('☕ Enjoy your freshly brewed Ristretto! ☕');
-    });
-
-    cy.resetIngredientsTable();
-  })
-
-  it('Reset', () => {
-    cy.resetIngredientsTable();
   })
 
   /* Alerts behave correctly */
@@ -169,12 +125,5 @@ context('Ingredients - UI Tests', () => {
     cy.get('#amount-Milk').type(1);
     cy.get('#button-Milk').should('be.enabled').click();
     cy.get('.alert').should('not.exist');
-  })
-
-  /* Page length doesn't cause issues */
-  it('Bottommost brew button can be reached', () => {
-    cy.scrollTo('bottom');
-    cy.get('#recipe-Hot\\ Chocolate > #brewButton')
-      .should('be.visible');
   })
 })
