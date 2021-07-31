@@ -17,7 +17,6 @@ export class AddRecipeComponent implements OnInit {
   waterAmountValue!: number;
   milkAmountValue!: number;
   cocoaAmountValue!: number;
-  isFavorite!: boolean;
 
   constructor(private service: IngredientsService) { }
 
@@ -31,8 +30,7 @@ export class AddRecipeComponent implements OnInit {
       coffeeAmount: this.coffeeAmountValue ? this.coffeeAmountValue : 0,
       waterAmount: this.waterAmountValue ? this.waterAmountValue : 0,
       milkAmount: this.milkAmountValue ? this.milkAmountValue : 0,
-      cocoaAmount: this.cocoaAmountValue ? this.cocoaAmountValue : 0,
-      isFavorite: false
+      cocoaAmount: this.cocoaAmountValue ? this.cocoaAmountValue : 0
     };
     console.log(enteredRecipe);
     this.service.addRecipe(enteredRecipe);

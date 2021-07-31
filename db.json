@@ -32,7 +32,6 @@
       "waterAmount": 10,
       "milkAmount": 0,
       "cocoaAmount": 0,
-      "isFavorite": false,
       "id": 1
     },
     {
@@ -41,7 +40,6 @@
       "waterAmount": 10,
       "milkAmount": 0,
       "cocoaAmount": 0,
-      "isFavorite": false,
       "id": 2
     },
     {
@@ -50,7 +48,6 @@
       "waterAmount": 10,
       "milkAmount": 5,
       "cocoaAmount": 0,
-      "isFavorite": false,
       "id": 3
     },
     {
@@ -59,7 +56,6 @@
       "waterAmount": 0,
       "milkAmount": 10,
       "cocoaAmount": 10,
-      "isFavorite": false,
       "id": 4
     }
   ]

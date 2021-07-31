@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+/* Default values for ingredients */
 const default_coffee = {
   "id": 1,
   "name": "Coffee",
@@ -49,13 +50,13 @@ const default_cocoa = {
   "amount": 10
 }
 
+/* Default recipes */
 const default_americano = {
   "name": "Americano",
   "coffeeAmount": 5,
   "waterAmount": 10,
   "milkAmount": 0,
   "cocoaAmount": 0,
-  "isFavorite": false,
   "id": 1
 }
 const default_espresso = {
@@ -64,7 +65,6 @@ const default_espresso = {
   "waterAmount": 10,
   "milkAmount": 0,
   "cocoaAmount": 0,
-  "isFavorite": false,
   "id": 2
 }
 const default_latteMacchiato = {
@@ -73,7 +73,6 @@ const default_latteMacchiato = {
   "waterAmount": 10,
   "milkAmount": 5,
   "cocoaAmount": 0,
-  "isFavorite": false,
   "id": 3
 }
 const default_hotChocolate = {
@@ -82,10 +81,10 @@ const default_hotChocolate = {
   "waterAmount": 0,
   "milkAmount": 10,
   "cocoaAmount": 10,
-  "isFavorite": false,
   "id": 4
 }
 
+/* Commands to reset database tables */
 Cypress.Commands.add('resetIngredientsTable', () => {
   cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/1', default_coffee);
   cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/2', default_water);
@@ -95,7 +94,7 @@ Cypress.Commands.add('resetIngredientsTable', () => {
 
 Cypress.Commands.add('resetRecipesTable', () => {
   let i = 5;
-  while(i<7) {
+  while (i < 7) { // 4 are default and tests never add more than 2 (so far)
     cy.request({
       method: 'DELETE',
       failOnStatusCode: false,
