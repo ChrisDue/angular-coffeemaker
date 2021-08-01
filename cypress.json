@@ -10,10 +10,10 @@
       }
     },
     "appUrl": "http://localhost:4200",
-    "appUrl_Ingredients": "http://localhost:4200/ingredients",
     "appUrl_Recipes": "http://localhost:4200/recipes",
+    "appUrl_Ingredients": "http://localhost:4200/ingredients",
     "dbUrl": "http://localhost:3000",
-    "dbUrl_Ingredients": "http://localhost:3000/ingredients",
-    "dbUrl_Recipes": "http://localhost:3000/recipes"
+    "dbUrl_Recipes": "http://localhost:3000/recipes",
+    "dbUrl_Ingredients": "http://localhost:3000/ingredients"
   }
 }
