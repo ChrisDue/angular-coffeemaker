@@ -3,7 +3,11 @@
 context('Ingredients - UI Tests', () => {
   beforeEach(() => {
     cy.resetIngredientsTable();
-    cy.visit(Cypress.env('appUrl_Ingredients'));
+    cy.visit('http://localhost:4200/ingredients');
+  })
+
+  after(() => {
+    cy.resetIngredientsTable();
   })
 
   /* General tests */
@@ -32,7 +36,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#button-Coffee').should('be.disabled');
   })
 
-  it('Submit button disabled after interaction', () => {
+  it('Submit button disabled during interaction', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#button-Coffee').should('be.disabled');
   })
@@ -53,16 +57,11 @@ context('Ingredients - UI Tests', () => {
     cy.get('.alert').should('not.exist');
   })
 
-  it('Empty amount triggers alert', () => {
+  it('Empty amount triggers alert with correct text', () => {
     cy.get('#amount-Coffee').click();
     cy.get('#ingredient-Coffee').find('label').click();
-    cy.get('.alert').should('be.visible');
-  })
-
-  it('Empty amount alert text correct', () => {
-    cy.get('#amount-Coffee').click();
-    cy.get('#ingredient-Coffee').find('label').click();
-    cy.get('.alert').should('be.visible');
+    cy.get('.alert').should('be.visible')
+      .and('contain.text', 'An amount is required 🤲');
   })
 
   it('Empty amount alert disappears after inserting one', () => {
