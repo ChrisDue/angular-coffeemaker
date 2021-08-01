@@ -30,6 +30,7 @@ context('Ingredients - UI Tests', () => {
       .should('contain.text', 'Cocoa: 10g');
   })
 
+  /* Blocking brewing */
   it('Brewing second recipe is blocked by insufficient ingredients', () => {
     cy.get('#recipe-Americano > #brewButton')
       .click();
@@ -46,13 +47,12 @@ context('Ingredients - UI Tests', () => {
     cy.get('#form-Cocoa > .form-label')
       .should('contain.text', 'Cocoa: 10g');
 
-    cy.visit(Cypress.env('appUrl_Recipes'));
+    cy.go('back');
 
     cy.get('#recipe-Latte\\ Macchiato > #brewButton')
       .click();
 
-    cy.wait(500)
-      .visit(Cypress.env('appUrl_Ingredients'));
+    cy.wait(500).go('forward');
 
     cy.get('#form-Coffee > .form-label')
       .should('contain.text', 'Coffee: 5g');

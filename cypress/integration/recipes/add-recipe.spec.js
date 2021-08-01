@@ -6,6 +6,10 @@ context('Ingredients - UI Tests', () => {
     cy.visit(Cypress.env('appUrl_Recipes'));
   })
 
+  after(() => {
+    cy.resetRecipesTable();
+  })
+
   /* General display tests */
   it('Recipe creation form is visible', () => {
     cy.get('#form-new-recipe').should('be.visible');
@@ -22,12 +26,19 @@ context('Ingredients - UI Tests', () => {
   })
 
   it('All ingredients show their correct unit', () => {
-    cy.get('#coffeeAmount > label').should('contain', 'in g');
+    cy.get('#coffeeAmount > label').should('contain.text', 'in g');
+    cy.get('#waterAmount > label').should('contain.text', 'in ml');
+    cy.get('#milkAmount > label').should('contain.text', 'in ml');
+    cy.get('#cocoaAmount > label').should('contain.text', 'in g');
   })
 
   /* User interactions */
-  it('Recipe name can be typed', () => {
+  it('Recipe name warning disappears after typing valid one', () => {
     cy.get('#name').type('Short Coffee Name');
+    cy.get('#error-name-length')
+      .should('not.exist');
+    cy.get('#error-name-empty')
+      .should('not.exist');
   })
 
   it('All ingredient amount fields can be typed in', () => {
@@ -52,21 +63,32 @@ context('Ingredients - UI Tests', () => {
     cy.get('#submit-new-recipe').should('be.disabled');
   })
 
-  /* Input sanitization */
+  /* Alerts behave correctly */
   it('Error shown if name is shorter than 2 chars', () => {
     cy.get('#name').type('A');
     // click somewhere else to trigger error visibility
     cy.get('#form-new-recipe').click();
-    cy.get('#error-name-length').should('be.visible');
+    cy.get('#error-name-length')
+      .should('be.visible')
+      .and('contain.text', 'Recipe names need 2 to 20 characters.');
   })
 
   it('Error shown if name clicked but left empty', () => {
     cy.get('#name').click();
     // click somewhere else to trigger error visibility
     cy.get('#form-new-recipe').click();
-    cy.get('#error-name-empty').should('be.visible');
+    cy.get('#error-name-empty')
+      .should('be.visible')
+      .and('contain.text', 'Recipes require a name.');
   })
 
+  it('Submit button clickable after name and 1 ingredient given', () => {
+    cy.get('#name').type('Test Recipe');
+    cy.get('#waterAmount').type(8);
+    cy.get('#submit-new-recipe').should('be.enabled').click();
+  })
+
+  /* Input sanitization */
   it('Recipe name is cut at 20 chars', () => {
     cy.get('#name')
       .find('input')
@@ -80,12 +102,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#milkAmount   > input').type('-1').should('have.value', '1');
   })
 
-  it('Submit button clickable after name and 1 ingredient given', () => {
-    cy.get('#name').type('Test Recipe');
-    cy.get('#waterAmount').type(8);
-    cy.get('#submit-new-recipe').should('be.enabled').click();
-  })
-
+  /* Creating recipe with correct values */
   it('Values saved correctly in newly created recipe', () => {
     cy.get('#name').type('Lungo')
       .get('#coffeeAmount').type(8)
@@ -102,28 +119,5 @@ context('Ingredients - UI Tests', () => {
       .should('contain', '0');
     cy.get('#recipe-Lungo > table > tr:nth-child(4) > td:nth-child(2)')
       .should('contain', '0');
-  })
-
-  /* Alerts behave correctly */
-  it.skip('No alerts displayed before interaction', () => {
-    cy.get('.alert').should('not.exist');
-  })
-
-  it.skip('Empty amount triggers alert', () => {
-    cy.get('#amount-Coffee').click();
-    cy.get('#ingredient-Coffee').find('label').click();
-    cy.get('.alert').should('be.visible');
-  })
-
-  it.skip('Empty amount alert text correct', () => {
-    cy.get('#amount-Coffee').click();
-    cy.get('#ingredient-Coffee').find('label').click();
-    cy.get('.alert').should('be.visible');
-  })
-
-  it.skip('Empty amount alert disappears after inserting one', () => {
-    cy.get('#amount-Milk').type(1);
-    cy.get('#button-Milk').should('be.enabled').click();
-    cy.get('.alert').should('not.exist');
   })
 })
