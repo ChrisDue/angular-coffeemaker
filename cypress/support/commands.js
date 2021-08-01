@@ -85,14 +85,29 @@ const default_hotChocolate = {
 }
 
 /* Commands to reset database tables */
+// Using simple variable, for thesis
 Cypress.Commands.add('resetIngredientsTable', () => {
-  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/1', default_coffee);
-  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/2', default_water);
-  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/3', default_milk);
-  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/4', default_cocoa);
+  let ingredientsUrl = "http://localhost:3000/ingredients";
+  cy.request('PUT', ingredientsUrl + '/1', default_coffee);
+  cy.request('PUT', ingredientsUrl + '/2', default_water);
+  cy.request('PUT', ingredientsUrl + '/3', default_milk);
+  cy.request('PUT', ingredientsUrl + '/4', default_cocoa);
+});
+
+// Using global constant and id reference, for style 
+Cypress.Commands.add('resetIngredientsTable_nice', () => {
+  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_coffee.id, default_coffee);
+  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_water.id, default_water);
+  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_milk.id, default_milk);
+  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_cocoa.id, default_cocoa);
 });
 
 Cypress.Commands.add('resetRecipesTable', () => {
+  /* Not working for coffeemaker yet */
+  // cy.fixture("db_backup.json").then((db_backup) => {
+  //   cy.writeFile('db.json', db_backup);
+  // })
+
   let i = 5;
   while (i < 7) { // 4 are default and tests never add more than 2 (so far)
     cy.request({
