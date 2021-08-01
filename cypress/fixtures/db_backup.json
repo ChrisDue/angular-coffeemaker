@@ -1,0 +1,62 @@
+{
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Coffee",
+      "unit": "g",
+      "amount": 10
+    },
+    {
+      "id": 2,
+      "name": "Water",
+      "unit": "ml",
+      "amount": 10
+    },
+    {
+      "id": 3,
+      "name": "Milk",
+      "unit": "ml",
+      "amount": 10
+    },
+    {
+      "id": 4,
+      "name": "Cocoa",
+      "unit": "g",
+      "amount": 10
+    }
+  ],
+  "recipes": [
+    {
+      "name": "Americano",
+      "coffeeAmount": 5,
+      "waterAmount": 10,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
+      "id": 1
+    },
+    {
+      "name": "Espresso",
+      "coffeeAmount": 10,
+      "waterAmount": 10,
+      "milkAmount": 0,
+      "cocoaAmount": 0,
+      "id": 2
+    },
+    {
+      "name": "Latte Macchiato",
+      "coffeeAmount": 5,
+      "waterAmount": 10,
+      "milkAmount": 5,
+      "cocoaAmount": 0,
+      "id": 3
+    },
+    {
+      "name": "Hot Chocolate",
+      "coffeeAmount": 0,
+      "waterAmount": 0,
+      "milkAmount": 10,
+      "cocoaAmount": 10,
+      "id": 4
+    }
+  ]
+}
