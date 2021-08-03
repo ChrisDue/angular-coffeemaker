@@ -16,7 +16,7 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit(): void { }
 
   onBrewSubmit(): void {
-    console.log('Use ingredients for ' + this.recipe.name);
+    // console.log('Use ingredients for ' + this.recipe.name);
     this.service.brewRecipe(this.recipe);
   }
 }
