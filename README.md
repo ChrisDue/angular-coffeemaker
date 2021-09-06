@@ -3,24 +3,22 @@
 System under Test for my Bachelor Thesis. All important info is listed below.  
 
 <br/>
-<br/>
-
-# Getting started 
-
-Created by following the YouTube crashcourse by Traversy Media: https://www.youtube.com/watch?v=Fdf5aTYRW0E  
-Related Github: https://github.com/bradtraversy/angular-crash-todolist
 
 ## 1. Coffeemaker Web App 
 
-### ? 1.1 Installation ?
+### 1.1 Installation
 
+If NPM was not already installed, use the following CLI call: 
 > npm install -g
 
 ### 1.2 Launch and view
 
+To start the web app and open it in browser: 
 > ng serve --open  
 
 Opens your Default Browser on http://localhost:4200/, where the Coffeemaker is running.  
+
+<br/>
 
 ## 2. API and DB
 
@@ -29,14 +27,28 @@ https://www.npmjs.com/package/json-server / https://github.com/typicode/json-ser
 
 ### 2.1 Installation
 
+If json-server was not already installed, use the following CLI call: 
 > npm install -g json-server
 
 ### 2.2 Launch and view
 
+To start the DB and open it in browser: 
 > json-server --watch db.json
 
 <br/>
-<br/>
+
+## 3. Cypress  
+
+### 3.1 Installation
+
+If Cypress was not already installed, use the following CLI call: 
+> TODO
+
+### 3.2 Launch and view
+
+To start the Cypress Test Runner and see all executable tests: 
+> npx cypress open 
+
 <br/>
 
 # Default text by Angular
