@@ -4,4 +4,5 @@ export class Recipe {
     waterAmount!: number;
     milkAmount!: number;
     cocoaAmount!: number;
+    sugarAmount!: number;
 }

@@ -21,7 +21,7 @@ context('Header', () => {
     cy.url().should('include', '/about')
   })
 
-  it('looks the same on every page', () => {
+  it.skip('looks the same on every page', () => {
     cy.visit('http://localhost:4200/recipes')
     cy.get('.header').toMatchImageSnapshot();
 

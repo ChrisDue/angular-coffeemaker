@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Ingredients - UI Tests', () => {
+context('Recipes - UI Tests', () => {
   beforeEach(() => {
     cy.resetRecipesTable();
     cy.resetIngredientsTable();

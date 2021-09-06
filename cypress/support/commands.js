@@ -49,6 +49,12 @@ const default_cocoa = {
   "unit": "g",
   "amount": 10
 }
+const default_sugar = {
+  "id": 5,
+  "name": "Sugar",
+  "unit": "g",
+  "amount": 10
+}
 
 /* Default recipes */
 const default_americano = {
@@ -57,6 +63,7 @@ const default_americano = {
   "waterAmount": 10,
   "milkAmount": 0,
   "cocoaAmount": 0,
+  "sugarAmount": 0,
   "id": 1
 }
 const default_espresso = {
@@ -65,6 +72,7 @@ const default_espresso = {
   "waterAmount": 10,
   "milkAmount": 0,
   "cocoaAmount": 0,
+  "sugarAmount": 0,
   "id": 2
 }
 const default_latteMacchiato = {
@@ -73,6 +81,7 @@ const default_latteMacchiato = {
   "waterAmount": 10,
   "milkAmount": 5,
   "cocoaAmount": 0,
+  "sugarAmount": 5,
   "id": 3
 }
 const default_hotChocolate = {
@@ -81,6 +90,7 @@ const default_hotChocolate = {
   "waterAmount": 0,
   "milkAmount": 10,
   "cocoaAmount": 10,
+  "sugarAmount": 10,
   "id": 4
 }
 
@@ -92,6 +102,7 @@ Cypress.Commands.add('resetIngredientsTable', () => {
   cy.request('PUT', ingredientsUrl + '/2', default_water);
   cy.request('PUT', ingredientsUrl + '/3', default_milk);
   cy.request('PUT', ingredientsUrl + '/4', default_cocoa);
+  cy.request('PUT', ingredientsUrl + '/5', default_sugar);
 });
 
 // Using global constant and id reference, for style 
@@ -100,6 +111,7 @@ Cypress.Commands.add('resetIngredientsTable_nice', () => {
   cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_water.id, default_water);
   cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_milk.id, default_milk);
   cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_cocoa.id, default_cocoa);
+  cy.request('PUT', Cypress.env('dbUrl_Ingredients') + default_sugar.id, default_sugar);
 });
 
 Cypress.Commands.add('resetRecipesTable', () => {
@@ -120,5 +132,6 @@ Cypress.Commands.add('resetRecipesTable', () => {
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/1', default_americano);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/2', default_espresso);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/3', default_latteMacchiato);
+  cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/4', default_hotChocolate);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/4', default_hotChocolate);
 });

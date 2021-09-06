@@ -41,7 +41,7 @@ export class IngredientsService {
       .subscribe();
     ///// DON'T Add name-check
     ///// DON'T Add editor
-    // TODO Add delete-button
+    ///// DON'T Add delete-button
     // TODO Avoid comma-values
   }
 
@@ -71,6 +71,8 @@ export class IngredientsService {
     if (currentMilk.amount < recipe.milkAmount) return currentMilk.name;
     let currentCocoa: Ingredient = await this.getIngredientById(Id.cocoa);
     if (currentCocoa.amount < recipe.cocoaAmount) return currentCocoa.name;
+    let currentSugar: Ingredient = await this.getIngredientById(Id.sugar);
+    if (currentSugar.amount < recipe.sugarAmount) return currentSugar.name;
 
     return result;
   }
@@ -85,6 +87,8 @@ export class IngredientsService {
     this.useIngredient(oldMilk, recipe.milkAmount);
     let oldCocoa: Ingredient = await this.getIngredientById(Id.cocoa);
     this.useIngredient(oldCocoa, recipe.cocoaAmount);
+    let oldSugar: Ingredient = await this.getIngredientById(Id.sugar);
+    this.useIngredient(oldSugar, recipe.sugarAmount);
   }
 
   /**

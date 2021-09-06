@@ -13,6 +13,12 @@
                 Recipe names need {{ name.errors?.minlength.requiredLength }} to 20 characters.</div>
         </div>
     </div>
+    <div class="form-floating indented" id="sugarAmount">
+        <input type="number" class="form-control" placeholder=" " [(ngModel)]="sugarAmountValue"
+            ngModel name="sugarAmount" #sugarAmount="ngModel" (change)="log(sugarAmount)" min="0"
+            oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
+        <label for="sugarAmount">Amount of Sugar in g</label>
+    </div>
     <div class="form-floating indented" id="coffeeAmount">
         <input type="number" class="form-control" min="0" placeholder=" " [(ngModel)]="coffeeAmountValue" ngModel
             name="coffeeAmount" #coffeeAmount="ngModel" (change)="log(coffeeAmount)"
@@ -42,11 +48,13 @@
         || !coffeeAmount.viewModel 
         && !waterAmount.viewModel 
         && !milkAmount.viewModel 
-        && !cocoaAmount.viewModel">
+        && !cocoaAmount.viewModel
+        && !sugarAmount.viewModel">
         Recipes need a Name and at least one Ingredient.</div>
     <input type="submit" class="btn btn-success" id="submit-new-recipe" value="Create new Recipe" [disabled]="!name.valid 
         || !coffeeAmount.viewModel 
         && !waterAmount.viewModel 
         && !milkAmount.viewModel 
-        && !cocoaAmount.viewModel">
+        && !cocoaAmount.viewModel
+        && !sugarAmount.viewModel">
 </form>
