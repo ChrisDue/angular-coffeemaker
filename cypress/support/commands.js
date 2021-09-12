@@ -115,7 +115,7 @@ Cypress.Commands.add('resetIngredientsTable_nice', () => {
 });
 
 Cypress.Commands.add('resetRecipesTable', () => {
-  /* Not working for coffeemaker yet */
+  /* Fixtures not working for coffeemaker yet */
   // cy.fixture("db_backup.json").then((db_backup) => {
   //   cy.writeFile('db.json', db_backup);
   // })
@@ -132,6 +132,5 @@ Cypress.Commands.add('resetRecipesTable', () => {
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/1', default_americano);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/2', default_espresso);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/3', default_latteMacchiato);
-  cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/4', default_hotChocolate);
   cy.request('PUT', Cypress.env('dbUrl_Recipes') + '/4', default_hotChocolate);
 });

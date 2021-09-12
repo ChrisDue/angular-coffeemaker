@@ -38,6 +38,8 @@ context('Recipes - UI Tests', () => {
     cy.wait(500)
       .visit(Cypress.env('appUrl_Ingredients'));
 
+    cy.get('#form-Sugar > .form-label')
+      .should('contain.text', 'Sugar: 10g');
     cy.get('#form-Coffee > .form-label')
       .should('contain.text', 'Coffee: 5g');
     cy.get('#form-Water > .form-label')
@@ -54,6 +56,8 @@ context('Recipes - UI Tests', () => {
 
     cy.wait(500).go('forward');
 
+    cy.get('#form-Sugar > .form-label')
+      .should('contain.text', 'Sugar: 10g');
     cy.get('#form-Coffee > .form-label')
       .should('contain.text', 'Coffee: 5g');
     cy.get('#form-Water > .form-label')

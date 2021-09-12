@@ -30,6 +30,7 @@ context('Recipes - UI Tests', () => {
     cy.get('#waterAmount > label').should('contain.text', 'in ml');
     cy.get('#milkAmount > label').should('contain.text', 'in ml');
     cy.get('#cocoaAmount > label').should('contain.text', 'in g');
+    cy.get('#sugarAmount > label').should('contain.text', 'in g');
   })
 
   /* User interactions */
@@ -46,6 +47,7 @@ context('Recipes - UI Tests', () => {
     cy.get('#waterAmount').type('2');
     cy.get('#milkAmount').type('3');
     cy.get('#cocoaAmount').type('4');
+    cy.get('#sugarAmount').type('5');
   })
 
   it('Submit button enabled after typing name and 1 value', () => {
@@ -60,6 +62,7 @@ context('Recipes - UI Tests', () => {
     cy.get('#waterAmount').type('0');
     cy.get('#milkAmount').type('0');
     cy.get('#cocoaAmount').type('0');
+    cy.get('#sugarAmount').type('0');
     cy.get('#submit-new-recipe').should('be.disabled');
   })
 
@@ -103,7 +106,8 @@ context('Recipes - UI Tests', () => {
   })
 
   /* Creating recipe with correct values */
-  it('Values saved correctly in newly created recipe', () => {
+  //! Fails after adding Sugar
+  it.skip('Values saved correctly in newly created recipe #1', () => {
     cy.get('#name').type('Lungo')
       .get('#coffeeAmount').type(8)
       .get('#waterAmount').type(10)
@@ -118,6 +122,37 @@ context('Recipes - UI Tests', () => {
     cy.get('#recipe-Lungo > table > tr:nth-child(3) > td:nth-child(2)')
       .should('contain', '0');
     cy.get('#recipe-Lungo > table > tr:nth-child(4) > td:nth-child(2)')
+      .should('contain', '0');
+  })
+
+  //! Works after adding Sugar
+  it('Values saved correctly in newly created recipe #2', () => {
+    cy.get('#name').type('Lungo')
+      .get('#coffeeAmount').type(8)
+      .get('#waterAmount').type(10)
+      .get('#submit-new-recipe').should('be.enabled').click();
+
+    cy.get('#recipe-Lungo > h2')
+      .should('contain.text', 'Lungo:');
+    cy.get('#recipe-Lungo')
+      .contains('td', 'Sugar')
+      .siblings()
+      .should('contain', '0');
+    cy.get('#recipe-Lungo')
+      .contains('td', 'Coffee')
+      .siblings()
+      .should('contain', '8');
+    cy.get('#recipe-Lungo')
+      .contains('td', 'Water')
+      .siblings()
+      .should('contain', '10');
+    cy.get('#recipe-Lungo')
+      .contains('td', 'Milk')
+      .siblings()
+      .should('contain', '0');
+    cy.get('#recipe-Lungo')
+      .contains('td', 'Cocoa')
+      .siblings()
       .should('contain', '0');
   })
 })

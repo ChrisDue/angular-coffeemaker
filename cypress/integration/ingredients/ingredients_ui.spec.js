@@ -16,6 +16,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#form-Water').find('label').should('contain.text', 'Water: 10');
     cy.get('#form-Milk').find('label').should('contain.text', 'Milk: 10');
     cy.get('#form-Cocoa').find('label').should('contain.text', 'Cocoa: 10');
+    cy.get('#form-Sugar').find('label').should('contain.text', 'Sugar: 10');
   })
 
   it('All ingredients show their correct unit', () => {
@@ -23,6 +24,7 @@ context('Ingredients - UI Tests', () => {
     cy.get('#form-Water').find('label').should('contain.text', 'ml');
     cy.get('#form-Milk').find('label').should('contain.text', 'ml');
     cy.get('#form-Cocoa').find('label').should('contain.text', 'g');
+    cy.get('#form-Sugar').find('label').should('contain.text', 'g');
   })
 
   /* User interactions take effect */
