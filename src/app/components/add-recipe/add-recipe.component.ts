@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from 'src/app/models/Recipe';
-import { IngredientsService } from 'src/app/services/ingredients.service';
+import { IngredientsService } from 'src/app/services/machine.service';
 
 @Component({
   selector: 'app-add-recipe',
