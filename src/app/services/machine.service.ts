@@ -17,7 +17,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class IngredientsService {
+export class MachineService {
   ingredientsUrl: string = 'http://localhost:3000/ingredients';
   recipesUrl: string = 'http://localhost:3000/recipes';
 

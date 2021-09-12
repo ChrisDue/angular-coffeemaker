@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IngredientsService } from '../../services/machine.service';
+import { MachineService } from '../../services/machine.service';
 import { Ingredient } from 'src/app/models/Ingredient';
 
 @Component({
@@ -11,18 +11,18 @@ import { Ingredient } from 'src/app/models/Ingredient';
 export class IngredientsComponent implements OnInit {
   ingredients!: Ingredient[];
 
-  constructor(private ingredientsService: IngredientsService) {
+  constructor(private machineService: MachineService) {
   }
 
   ngOnInit(): void {
     // Get ingredients list from server / db
-    this.ingredientsService.getIngredients().subscribe(ingredients => {
+    this.machineService.getIngredients().subscribe(ingredients => {
       this.ingredients = ingredients;
     });
   }
 
   onGet() {
     console.log('get all ingredients');
-    this.ingredientsService.getIngredients().subscribe(x => console.log(x))
+    this.machineService.getIngredients().subscribe(x => console.log(x))
   }
 }

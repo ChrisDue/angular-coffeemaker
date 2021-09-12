@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IngredientsService } from 'src/app/services/machine.service';
+import { MachineService } from 'src/app/services/machine.service';
 import { Ingredient } from 'src/app/models/Ingredient';
 
 @Component({
@@ -13,7 +13,7 @@ export class IngredientItemComponent implements OnInit {
 
   refillAmountValue!: number;
 
-  constructor(private service: IngredientsService) { }
+  constructor(private service: MachineService) { }
 
   ngOnInit() { }
 
