@@ -1,6 +1,6 @@
-# Angular Coffeemaker
+# Smart Coffeemaker made in Angular
 
-System under Test for my Bachelor Thesis. All important info is listed below.  
+System under Test for the  Bachelor Thesis of Christopher Dührkop (Matrikelnummer 2390000). All important info to get this app started is listed below.  
 
 <br/>
 
@@ -22,10 +22,11 @@ Opens your Default Browser on http://localhost:4200/, where the Coffeemaker is r
 
 ## 2. API and DB
 
-Created following the instructions in the packages' readme:  
-https://www.npmjs.com/package/json-server / https://github.com/typicode/json-server.
+Created following the instructions in the packages' readme: https://www.npmjs.com/package/json-server / https://github.com/typicode/json-server.
 
 ### 2.1 Installation
+
+It's recommended to start another terminal, so you have one for the App, and a separate one for the DB.  
 
 If json-server was not already installed, use the following CLI call: 
 > npm install -g json-server
@@ -41,8 +42,13 @@ To start the DB and open it in browser:
 
 ### 3.1 Installation
 
-If Cypress was not already installed, use the following CLI call: 
-> TODO
+Created following the instructions in the Cypress documentation: https://docs.cypress.io/guides/getting-started/installing-cypress  
+
+If Cypress was not already installed, first navigate to the project's repo: 
+> cd /your/project/path  
+
+... and then use the following CLI call: 
+> npm install cypress --save-dev
 
 ### 3.2 Launch and view
 
@@ -51,7 +57,7 @@ To start the Cypress Test Runner and see all executable tests:
 
 <br/>
 
-# Default text by Angular
+# Default text block by Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
