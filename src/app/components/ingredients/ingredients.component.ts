@@ -20,9 +20,4 @@ export class IngredientsComponent implements OnInit {
       this.ingredients = ingredients;
     });
   }
-
-  onGet() {
-    console.log('get all ingredients');
-    this.machineService.getIngredients().subscribe(x => console.log(x))
-  }
 }

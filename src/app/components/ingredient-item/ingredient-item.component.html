@@ -7,8 +7,7 @@
 
         <div class="input-group">
             <input type="number" class="form-control" id="amount-{{ ingredient.name }}" placeholder="Amount"
-                [(ngModel)]="refillAmountValue" ngModel name="refillAmount" #refillAmount="ngModel"
-                (change)="log(refillAmount)">
+                [(ngModel)]="refillAmountValue" ngModel name="refillAmount" #refillAmount="ngModel">
 
             <span class="input-group-text" id="unit-{{ ingredient.name }}" width="10px">
                 {{ ingredient.unit }}</span>

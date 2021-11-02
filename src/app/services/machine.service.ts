@@ -12,7 +12,6 @@ const httpOptions = {
   })
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -33,28 +32,20 @@ export class MachineService {
     return this.http.get<Recipe[]>(this.recipesUrl);
   }
 
-  /* Add given recipe to DB of existing ones */
+  /* Add given recipe to DB table of existing ones */
   async addRecipe(enteredRecipe: Recipe): Promise<void> {
-    console.log("Adding recipe: " + enteredRecipe);
-
     this.http.post<Recipe>(this.recipesUrl, enteredRecipe, httpOptions)
       .subscribe();
-    ///// DON'T Add name-check
-    ///// DON'T Add editor
-    ///// DON'T Add delete-button
-    // TODO Avoid comma-values
   }
 
   /* Consume ingredients of given recipe, if all are sufficient, otherwise alert */
   async brewRecipe(recipe: Recipe): Promise<void> {
-    // console.log("> > Can I brew " + recipe.name + " ?");
     let missingIngredient: string = await this.enoughIngredientsAvailable(recipe);
 
     if (missingIngredient != NONE_STRING) {
       alert("Not enough ingredients! Need more " + missingIngredient);
     } else {
       this.useNeededIngredients(recipe);
-      // console.log("< < Done brewing " + recipe.name)
       alert("☕ Enjoy your freshly brewed " + recipe.name + "! ☕");
     }
   }
@@ -77,7 +68,7 @@ export class MachineService {
     return result;
   }
 
-  /* Reduce amounts of all ingredients of given recipe */
+  /* Reduce amounts of all ingredients by values of given recipe */
   async useNeededIngredients(recipe: Recipe): Promise<void> {
     let oldCoffee: Ingredient = await this.getIngredientById(Id.coffee);
     this.useIngredient(oldCoffee, recipe.coffeeAmount);
@@ -112,7 +103,7 @@ export class MachineService {
       .subscribe();
   }
 
-  /* Add given amount of given ingredient back into the machine */
+  /* Add given amount of given ingredient into the machine */
   refillIngredient(ingredient: Ingredient, refillAmount: number): void {
     let ingUrl: string = `${this.ingredientsUrl}/${ingredient.id}`;
     let amountJson = {
@@ -126,10 +117,4 @@ export class MachineService {
   getIngredients(): Observable<Ingredient[]> {
     return this.http.get<Ingredient[]>(this.ingredientsUrl);
   }
-
-  /*     updateIngredientsList(): void {
-          this.getIngredients().subscribe(res => {
-              this.ingredientsList = res;
-          });
-      } */
 }

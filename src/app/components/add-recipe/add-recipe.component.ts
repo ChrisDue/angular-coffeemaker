@@ -9,7 +9,6 @@ import { MachineService } from 'src/app/services/machine.service';
 })
 
 export class AddRecipeComponent implements OnInit {
-  // any because not formatted as our module with id, etc.
   @Output() addRecipe: EventEmitter<any> = new EventEmitter();
 
   nameValue!: string;
@@ -23,8 +22,6 @@ export class AddRecipeComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  log(x: any) { console.log(x); }
-
   onAddSubmit() {
     const enteredRecipe: Recipe = {
       name: this.nameValue ? this.nameValue : "No-Name",
@@ -34,7 +31,6 @@ export class AddRecipeComponent implements OnInit {
       cocoaAmount: this.cocoaAmountValue ? this.cocoaAmountValue : 0,
       sugarAmount: this.sugarAmountValue ? this.sugarAmountValue : 0
     };
-    console.log(enteredRecipe);
     this.service.addRecipe(enteredRecipe);
     location.reload();
   }

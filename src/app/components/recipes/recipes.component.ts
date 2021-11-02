@@ -18,9 +18,4 @@ export class RecipesComponent implements OnInit {
       this.recipes = recipes;
     });
   }
-
-  onGet() {
-    console.log('get all recipes');
-    this.machineService.getRecipes().subscribe(recipes => console.log(recipes));
-  }
 }

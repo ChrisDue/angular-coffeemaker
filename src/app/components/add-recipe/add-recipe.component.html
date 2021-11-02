@@ -3,8 +3,8 @@
     <h2 class="whiteTextOverride">Your newest creation</h2>
 
     <div class="form-floating mb-3" id="name">
-        <input required type="text" minlength="2" maxlength="20" class="form-control" placeholder=" "
-            [(ngModel)]="nameValue" ngModel name="name" #name="ngModel" (change)="log(name)">
+        <input required type="text" class="form-control" minlength="2" maxlength="20" placeholder=" " [(ngModel)]="nameValue"
+            ngModel name="name" #name="ngModel">
         <label for="name">Recipe Name</label>
         <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
             <div *ngIf="name.errors?.required" id="error-name-empty">
@@ -14,32 +14,32 @@
         </div>
     </div>
     <div class="form-floating indented" id="sugarAmount">
-        <input type="number" class="form-control" placeholder=" " [(ngModel)]="sugarAmountValue"
-            ngModel name="sugarAmount" #sugarAmount="ngModel" (change)="log(sugarAmount)" min="0"
+        <input type="number" class="form-control" min="0" placeholder=" " [(ngModel)]="sugarAmountValue"
+            ngModel name="sugarAmount" #sugarAmount="ngModel"
             oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="sugarAmount">Amount of Sugar in g</label>
     </div>
     <div class="form-floating indented" id="coffeeAmount">
-        <input type="number" class="form-control" min="0" placeholder=" " [(ngModel)]="coffeeAmountValue" ngModel
-            name="coffeeAmount" #coffeeAmount="ngModel" (change)="log(coffeeAmount)"
+        <input type="number" class="form-control" min="0" placeholder=" " [(ngModel)]="coffeeAmountValue" 
+            ngModel name="coffeeAmount" #coffeeAmount="ngModel" 
             oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="coffeeAmount">Amount of Coffee in g</label>
     </div>
     <div class="form-floating indented" id="waterAmount">
-        <input type="number" class="form-control" min="0" placeholder=" "
-            [(ngModel)]="waterAmountValue" ngModel name="waterAmount" #waterAmount="ngModel" (change)="log(waterAmount)"
+        <input type="number" class="form-control" min="0" placeholder=" " [(ngModel)]="waterAmountValue" 
+            ngModel name="waterAmount" #waterAmount="ngModel"
             oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="waterAmount">Amount of Water in ml</label>
     </div>
     <div class="form-floating indented" id="milkAmount">
         <input type="number" class="form-control" min="0" placeholder=" " [(ngModel)]="milkAmountValue"
-            ngModel name="milkAmount" #milkAmount="ngModel" (change)="log(milkAmount)"
+            ngModel name="milkAmount" #milkAmount="ngModel"
             oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="milkAmount">Amount of Milk in ml</label>
     </div>
     <div class="form-floating indented" id="cocoaAmount">
-        <input type="number" class="form-control" placeholder=" " [(ngModel)]="cocoaAmountValue"
-            ngModel name="cocoaAmount" #cocoaAmount="ngModel" (change)="log(cocoaAmount)" min="0"
+        <input type="number" class="form-control" min="0" placeholder=" " [(ngModel)]="cocoaAmountValue"
+            ngModel name="cocoaAmount" #cocoaAmount="ngModel"
             oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? (Math.abs(this.value) <= 1500 ? Math.abs(this.value) : 1500) : 0">
         <label for="cocoaAmount">Amount of Cocoa in g</label>
     </div>
