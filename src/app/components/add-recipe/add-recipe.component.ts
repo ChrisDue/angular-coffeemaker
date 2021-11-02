@@ -5,7 +5,7 @@ import { MachineService } from 'src/app/services/machine.service';
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
-  styleUrls: ['../../app.component.css'] // , '../recipes/recipes.component.css'
+  styleUrls: ['../../app.component.css']
 })
 
 export class AddRecipeComponent implements OnInit {
