@@ -1,3 +1,13 @@
+a {
+  color: #009579;
+}  
+
+#app {
+  margin: 2em;
+  line-height: 1.5;
+  font-weight: 500;   
+}
+
 .form-control.ng-touched.ng-invalid {
     border: 2px solid red;
 }
@@ -112,14 +122,3 @@ p {
     .ridge {outline-style: ridge;}
     .inset {outline-style: inset;}
     .outset {outline-style: outset;}
-/* - */
-
-#app {
-    margin: 2em;
-    line-height: 1.5;
-    font-weight: 500;   
-}
-
-a {
-    color: #009579;
-}  
