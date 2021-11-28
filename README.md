@@ -17,12 +17,13 @@ To start the web app and open it in browser:
 > ng serve --open  
 
 Opens your Default Browser on http://localhost:4200/, where the Coffeemaker is running.  
+Here, you won't see any recipes or ingredients listed yet. For these to be loaded, start the DB as explained below. 
 
 <br/>
 
 ## 2. API and DB
 
-Created following the instructions in the packages' readme: https://www.npmjs.com/package/json-server / https://github.com/typicode/json-server.
+Created following the instructions in the "json-server" package's readme: https://www.npmjs.com/package/json-server / https://github.com/typicode/json-server.
 
 ### 2.1 Installation
 
@@ -33,8 +34,14 @@ If json-server was not already installed, use the following CLI call:
 
 ### 2.2 Launch and view
 
-To start the DB and open it in browser: 
+To start the DB and open it in browser with the following command: 
 > json-server --watch db.json
+
+To hold a valid data set, it has to be the db.json file that is included in this project.   
+
+Visit http://localhost:3000/ in your browser to see an overview of the available endpoints. These are http://localhost:3000/ingredients for the ingredients and http://localhost:3000/recipes for the recipes.
+
+Now the project is running and it's connected to a db filled with valid data. To run the automated tests, follow the instructions below. 
 
 <br/>
 
@@ -52,12 +59,21 @@ If Cypress was not already installed, first navigate to the project's repo:
 
 ### 3.2 Launch and view
 
-To start the Cypress Test Runner and see all executable tests: 
+To start the Cypress Test Runner UI and see all executable tests: 
 > npx cypress open 
+
+**Note 1:**  
+It is normal for the visual snapshot test to fail when running all tests. Go into the header section and run it separately.
+
+**Note 2:**  
+It is _also_ normal for the visual test "looks the same on every page" to fail when running it separately for the first time. To fix this, first run header.spec.js only. In the field of the failing test, click "COMPARE SNAPSHOT". This opens a window, comparing 2 snapshots. Here, click "Update snapshot". Then re-run the test. Repeat this step for every failing page. One after the other will succeed.  
+
 
 <br/>
 
-# Default text block by Angular
+
+
+# Default boilerplate text block by Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
