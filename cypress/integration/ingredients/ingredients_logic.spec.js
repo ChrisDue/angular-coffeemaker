@@ -10,12 +10,21 @@ context('Ingredients - Logic Tests', () => {
     cy.resetIngredientsTable();
   })
 
-  /* General tests */
+  /* Alerts behave correctly */
+  it('No alerts displayed before interaction', () => {
+    cy.get('.alert').should('not.exist');
+  })
 
-  /* User interactions take effect */
-  it('Ingredient amounts are updated after changes', () => {
-    cy.get('#amount-Water').type(1);
-    cy.get('#button-Water').should('be.enabled').click();
-    cy.get('#form-Water').find('label').contains('Water: 11ml');
+  it('Empty amount triggers alert with correct text', () => {
+    cy.get('#amount-Coffee').click();
+    cy.get('#ingredient-Coffee').find('label').click();
+    cy.get('.alert').should('be.visible')
+      .and('contain.text', 'An amount is required 🤲');
+  })
+
+  it('Empty amount alert disappears after inserting one', () => {
+    cy.get('#amount-Milk').type(1);
+    cy.get('#button-Milk').should('be.enabled').click();
+    cy.get('.alert').should('not.exist');
   })
 })

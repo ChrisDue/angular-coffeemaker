@@ -19,7 +19,7 @@ context('Ingredients - DB Tests', () => {
     });
   })
 
-  /* Change via UI - Test via request */
+  /* Change values via UI - Test via request */
   it('Ingredient amount is updated after UI interaction', () => {
     cy.get('#amount-Water').type(1);
     cy.get('#button-Water').should('be.enabled').click();
@@ -29,7 +29,7 @@ context('Ingredients - DB Tests', () => {
     });
   })
 
-  /* Change via request - Test via request */
+  /* Change values via request - Test via request */
   it('Ingredient amount is updated after PUT request', () => {
     cy.request('PUT', Cypress.env('dbUrl_Ingredients') + '/3', empty_milk);
     cy.request('GET', Cypress.env('dbUrl_Ingredients') + '/3').then(response => {

@@ -54,33 +54,14 @@ context('Ingredients - UI Tests', () => {
     cy.get('#button-Water').should('be.enabled');
   })
 
-  /* Alerts behave correctly */
-  it('No alerts displayed before interaction', () => {
-    cy.get('.alert').should('not.exist');
-  })
-
-  it('Empty amount triggers alert with correct text', () => {
-    cy.get('#amount-Coffee').click();
-    cy.get('#ingredient-Coffee').find('label').click();
-    cy.get('.alert').should('be.visible')
-      .and('contain.text', 'An amount is required 🤲');
-  })
-
-  it('Empty amount alert disappears after inserting one', () => {
-    cy.get('#amount-Milk').type(1);
-    cy.get('#button-Milk').should('be.enabled').click();
-    cy.get('.alert').should('not.exist');
-  })
-
   /* Page length doesn't cause issues */
   it('Bottommost ingredient can be reached', () => {
     cy.scrollTo('bottom');
     cy.get('#ingredient-Cocoa').should('be.visible');
   })
 
-  it('Bottommost ingredient not scrolled out of view after interaction', () => {
+  it.only('Bottommost ingredient not scrolled out of view after interaction', () => {
     cy.get('#amount-Cocoa').scrollIntoView();
-    //cy.wait(500);
     cy.get('#amount-Cocoa').should('be.visible')
       .type(1);
     cy.get('#button-Cocoa').should('be.enabled')

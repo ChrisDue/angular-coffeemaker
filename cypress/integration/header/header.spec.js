@@ -6,7 +6,6 @@ context('Header', () => {
   })
 
   it('shows correct headline', () => {
-    // Check header title
     cy.get('.header').find('h1')
       .should('have.text', 'I\'m Your Smart Coffeemaker')
   })
@@ -22,6 +21,7 @@ context('Header', () => {
   })
 
   it('looks the same on every page', () => {
+    // Visit every page and check the header
     cy.visit('http://localhost:4200/recipes')
     cy.get('.header').toMatchImageSnapshot();
 
