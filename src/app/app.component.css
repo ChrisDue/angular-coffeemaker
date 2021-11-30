@@ -15,8 +15,6 @@ a {
 .jumbotron-add-recipe {
     /* based on settings from older bootstrap version */
     background-color: #6f4e37cc;
-    /* background-color: #c27036cc; */
-    /* background-color: #e9ecef; */
     padding: 2rem 1rem;
     max-width: 32rem;
     border-radius: .3rem;
@@ -54,12 +52,6 @@ h2.whiteTextOverride {
 .content-div {
     padding: 15px 32px;
 }
-
-/* .border-div {
-    border: 3px solid #c06525;
-    border-radius: 15px;
-    max-width: 800px;
-} */
 
 body {
     --nav-width: 200px;
