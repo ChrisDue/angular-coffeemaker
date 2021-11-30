@@ -68,6 +68,25 @@ It is normal for the visual snapshot test to fail when running all tests. Go int
 **Note 2:**  
 It is _also_ normal for the visual test "looks the same on every page" to fail when running it separately for the first time. To fix this, first run header.spec.js only. In the field of the failing test, click "COMPARE SNAPSHOT". This opens a window, comparing 2 snapshots. Here, click "Update snapshot". Then re-run the test. Repeat this step for every failing page. One after the other will succeed.  
 
+<br/>
+
+## 4. Interesting Files and Folders
+
+- /cypress
+  - /downloads: Used when testing file download links etc.
+  - /fixtures: Unsuccessful attempts at using fixtures for resetting the db between tests
+  - /integration: All the automated tests, structured by pages
+  - /plugins: Importing and configuring plugins
+  - /support: Global variables and methods usable by all tests
+  - /videos: Recordings of tests, only made when activated
+- /e2e: Not in use
+- /node_modules: Auto-generated
+- /src: The application code, structured by components, including http, ts, css and (auto-generated and unused) unit-tests
+  - /assets: Usable assets like downloadable files, e.g. the user manual
+- cypress.json: Mainly used to set the most important URLs as global variables and to configure the threshold-value for cypress-plugin-snapshots 
+- db.json: Holds the actual database
+
+
 
 <br/>
 
