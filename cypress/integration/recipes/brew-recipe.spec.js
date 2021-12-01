@@ -68,6 +68,7 @@ context('Recipes - UI Tests', () => {
       .should('contain.text', 'Cocoa: 10g');
   })
 
+  /* Alerts triggered correctly */
   it('Original recipe can be brewn and triggers alert', () => {
     cy.get('#recipe-Americano')
       .contains('Brew Americano')
@@ -90,7 +91,7 @@ context('Recipes - UI Tests', () => {
       .contains('Brew Ristretto')
       .click();
 
-    // ! Step failt, aber Gesamttest nicht.
+    // ! Step fails, but overall test marked successful
     cy.on('window:alert', (successAlert) => {
       expect(successAlert).to
         .contain('☕ Enjoy your freshly brewed Ristretto! ☕');

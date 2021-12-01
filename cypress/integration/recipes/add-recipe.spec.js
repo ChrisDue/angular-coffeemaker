@@ -106,7 +106,7 @@ context('Recipes - UI Tests', () => {
   })
 
   /* Creating recipe with correct values */
-  //! Fails after adding Sugar
+  // ! Fails after adding Sugar
   it.skip('Values saved correctly in newly created recipe (pre-fix)', () => {
     cy.get('#name').type('Lungo')
       .get('#coffeeAmount').type(8)
@@ -125,7 +125,7 @@ context('Recipes - UI Tests', () => {
       .should('contain', '0');
   })
 
-  //! Works after adding Sugar
+  // ! Works after adding Sugar
   it('Values saved correctly in newly created recipe (post-fix)', () => {
     cy.get('#name').type('Lungo')
       .get('#coffeeAmount').type(8)

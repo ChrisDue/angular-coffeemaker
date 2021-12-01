@@ -1,10 +1,10 @@
 # Smart Coffeemaker made in Angular
 
-System under Test for the  Bachelor Thesis of Christopher Dührkop (Matrikelnummer 2390000). All important info to get this app started is listed below.  
+System under Test for the Bachelor Thesis of Christopher Dührkop (Matrikelnummer 2390000). This project can be also be found on GitHub https://github.com/ChrisDue/angular-coffeemaker. All important info to get this app started is listed below. 
 
 <br/>
 
-## 1. Coffeemaker Web App 
+## 1. Smart Coffeemaker Web App 
 
 ### 1.1 Installation
 
@@ -80,7 +80,6 @@ It is _also_ normal for the visual test "looks the same on every page" to fail w
   - /support: Global variables and methods usable by all tests
   - /videos: Recordings of tests, only made when activated
 - /e2e: Not in use
-- /node_modules: Auto-generated
 - /src: The application code, structured by components, including http, ts, css and (auto-generated and unused) unit-tests
   - /assets: Usable assets like downloadable files, e.g. the user manual
 - cypress.json: Mainly used to set the most important URLs as global variables and to configure the threshold-value for cypress-plugin-snapshots 
